@@ -1,0 +1,61 @@
+\ProvidesPackage{kaf22-title-course}[Титульный лист для курсовых работ кафедры 22 НИЯУ МИФИ]
+\RequirePackage{graphicx}
+\newcommand*{\techgroup}[1]{\gdef\@techgroup{#1}%
+}
+\newcommand*{\teacher}[1]{\gdef\@teacher{#1}%
+}
+\newcommand*{\variant}[1]{\gdef\@variant{#1}%
+}
+\newcommand*{\discipline}[1]{\gdef\@discipline{#1}%
+}
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+\centering
+\begin{spacing}{0.2}
+{\scshape\normalsize МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}\\
+{\scshape\small ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ}\\
+{\scshape\normalsize \textbf{Национальный исследовательский ядерный университет <<МИФИ>>}}\\
+\noindent\rule{\textwidth}{1pt}
+\end{spacing}
+\vspace{1.5cm}
+\begin{minipage}{0.1\textwidth}
+\raggedleft\includegraphics{styles/mephi-image.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\textwidth}
+\centering
+{\scshape\large \textbf{Институт}}\\
+{\scshape\large \textbf{интеллектуальных кибернетических систем}}\par
+{\scshape\large \textbf{Кафедра №22 <<Кибернетика>>}}
+\end{minipage}
+
+\vfill
+
+{\scshape\LARGE \textbf{Курсовая работа}}
+
+{\scshape\large по дисциплине \textbf{\@discipline}}
+
+{\scshape\large по теме <<\@title>>}
+
+\vfill
+
+\hfill\begin{minipage}{0.6\textwidth}\raggedleft
+    \begin{tabular}{|l|l|} \hline
+        Выполнил & \@author \\ \hline
+    
+        Группа & \@techgroup \\ \hline
+    
+        Вариант & \@variant \\ \hline
+    
+        Преподаватель & \@teacher \\ \hline
+        
+        Оценка & \\ \hline
+    \end{tabular}
+\end{minipage}
+
+\vfill
+
+{\large\textbf{Москва 2020}\par}
+\end{titlepage}
+}
+\endinput

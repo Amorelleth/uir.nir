@@ -1,0 +1,115 @@
+\ProvidesPackage{kaf22-title-uir-pz}[Титульный лист пояснительной записки на УИР кафедры 22 НИЯУ МИФИ]
+\RequirePackage{graphicx}
+\newcommand*{\techgroup}[1]{\gdef\@techgroup{#1}%
+}
+\newcommand*{\teacher}[1]{\gdef\@teacher{#1}%
+}
+\newcommand*{\consultant}[1]{\gdef\@consultant{#1}%
+}
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+\centering
+\begin{spacing}{0.2}
+{\scshape\normalsize МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ РОССИЙСКОЙ ФЕДЕРАЦИИ}\\
+{\scshape\small ФЕДЕРАЛЬНОЕ ГОСУДАРСТВЕННОЕ АВТОНОМНОЕ ОБРАЗОВАТЕЛЬНОЕ УЧРЕЖДЕНИЕ ВЫСШЕГО ОБРАЗОВАНИЯ}\\
+{\scshape\normalsize \textbf{Национальный исследовательский ядерный университет <<МИФИ>>}}\\
+\noindent\rule{\textwidth}{1pt}
+\end{spacing}
+\vspace{1.5cm}
+\begin{minipage}{0.1\textwidth}
+\raggedleft\includegraphics{styles/mephi-image.jpg}
+\end{minipage}
+\hfill
+\begin{minipage}{0.8\textwidth}
+\centering
+{\scshape\large \textbf{Институт}}\\
+{\scshape\large \textbf{интеллектуальных кибернетических систем}}\par
+{\scshape\large \textbf{Кафедра №22 <<Кибернетика>>}}
+\end{minipage}
+
+\vspace{0.9cm}
+
+Направление подготовки 09.03.04 Программная инженерия
+
+\vspace{0.3cm}
+
+{\scshape\LARGE \textbf{Пояснительная записка}}
+
+к учебно-исследовательской работе студента на тему:
+
+\vspace{0.6cm}
+
+\begin{spacing}{1}
+{\scshape\large\@title}\\
+\noindent\rule{\textwidth}{1pt}
+\end{spacing}\par
+
+\vspace{0.7cm}
+
+\begin{spacing}{1}
+\begin{tabular}{lcc}
+    \vspace{4mm}
+    Группа & 
+    $\overset{\text{\normalsize \@techgroup}}{\underset{\text{ }}{\underline{\hspace{5.5cm}}}}$ & \\
+
+    \vspace{4mm}
+    Студент &
+    $\underset{\text{(подпись)}}{\underline{\hspace{5.5cm}}}$ &
+    $\overset{\text{\normalsize \@author}}{\underset{\text{(ФИО)}}{\underline{\hspace{5.5cm}}}}$\\
+
+    \vspace{4mm}
+    Руководитель &
+    $\underset{\text{(подпись)}}{\underline{\hspace{5.5cm}}}$ & 
+    $\overset{\text{\normalsize \@teacher}}{\underset{\text{(ФИО)}}{\underline{\hspace{5.5cm}}}}$ \\
+
+    \vspace{4mm}
+    Научный консультант &
+    $\underset{\text{(подпись)}}{\underline{\hspace{5.5cm}}}$ & 
+    $\overset{\text{\normalsize \@consultant}}{\underset{\text{(ФИО)}}{\underline{\hspace{5.5cm}}}}$
+\end{tabular}
+
+\begin{tabular}{cccc}
+    \vspace{4mm}
+    \specialcell{Оценка\\руководителя} & 
+    $\underset{\text{(0-15 баллов)}}{\underline{\hspace{4cm}}}$ & 
+    \specialcell{Оценка\\консультанта} & 
+    $\underset{\text{(0-15 баллов)}}{\underline{\hspace{4cm}}}$ \\
+
+    \vspace{4mm}
+    Итоговая оценка &
+    $\underset{\text{(0-100 баллов)}}{\underline{\hspace{4cm}}}$ &
+    ECTS &
+    $\underline{\hspace{4cm}}$ \\
+\end{tabular}
+
+\vspace{1mm}
+
+{\scshape\normalsize Комиссия}
+
+\vspace{0.7cm}
+
+\begin{tabular}{ccc}
+    \vspace{4mm}
+    Председатель &
+    $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ & 
+    $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ \\
+
+    \vspace{4mm}
+    & $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ & 
+    $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ \\
+    
+    \vspace{4mm}
+    & $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ & 
+    $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ \\
+
+    \vspace{4mm}
+    & $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ & 
+    $\underset{\text{(подпись)}}{\underline{\hspace{4.5cm}}}$ \\
+\end{tabular}
+\end{spacing}
+\vfill
+
+{\large\textbf{Москва 2020}\par}
+\end{titlepage}
+}
+\endinput

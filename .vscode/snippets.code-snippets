@@ -1,0 +1,67 @@
+{
+    "rule": {
+        "prefix": "\\rule",
+        "body": [
+            "\\begin{equation}\\label{Rule:$1}",
+            "\t\\frac{",
+            "\t\t$2",
+            "\t}{",
+            "\t\t$3",
+            "\t}",
+            "\\end{equation}",
+            "$0"
+        ]
+    },
+    "angles": {
+        "prefix": "\\angles",
+        "body": "\\langle $1 \\rangle$0"
+    },
+    "image": {
+        "prefix": "image",
+        "body": [
+            "\\begin{figure}[ht]",
+            "\t\\begin{center}",
+            "\t\t\\includegraphics[width=.9\\linewidth]{\\pwd/img/$1.png}",
+            "\t\\end{center}",
+            "\t\\caption{$2}",
+            "\t\\label{Picture:$1}",
+            "\\end{figure}",
+            "$0"
+        ]
+    },
+    "screen": {
+        "prefix": "screen",
+        "body": [
+            "\\begin{figure}[ht]",
+            "\t\\begin{center}",
+            "\t\t\\includegraphics[width=.9\\linewidth]{\\pwd/img/screenshots/$1.jpg}",
+            "\t\\end{center}",
+            "\t\\caption{$2}",
+            "\t\\label{Picture:Screen:$1}",
+            "\\end{figure}",
+            "$0"
+        ]
+    },
+    "listing": {
+        "prefix": "listing",
+        "body": [
+            "\\begin{lstlisting}[label=Listing:$1,caption={$2}]",
+            "$0",
+            "\\end{lstlisting}"
+        ]
+    },
+    "table": {
+        "prefix": "table",
+        "body": [
+            "\\begin{table}[ht]",
+            "\\caption{$2}\\label{Table:$1}",
+            "\\centering",
+            "\t\\begin{tabular}{|p{0.3\\linewidth}|p{0.3\\linewidth}|p{0.3\\linewidth}|}\\hline",
+            "\t$0 & & ",
+            "\t\\\\\\ \\hline",
+            "\t\\end{tabular}",
+            "\\end{table}",
+        ]
+    }
+
+}

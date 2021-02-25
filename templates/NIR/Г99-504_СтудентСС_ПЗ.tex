@@ -1,0 +1,40 @@
+\documentclass[12pt,a4paper,oneside,final]{report}
+
+\newcommand{\pwd}{templates/NIR}
+
+\input{styles/kaf22-standard}
+
+\usepackage{styles/kaf22-title-uir-pz}
+\author{Иванов И.И.}
+\title{Разработка и анализ сложных систем реального времени}
+\techgroup{У66-111}
+\teacher{Петров П.П.}
+\consultant{Кириллов К.К.}
+
+\begin{document}
+    \maketitle
+    \setcounter{page}{2}
+    \clearpage
+    \input{\pwd/abstract}
+    \clearpage
+    \tableofcontents{}
+    \clearpage
+    \input{\pwd/intro}
+    \clearpage
+    \input{\pwd/analysis}
+    \clearpage
+    \input{\pwd/theory}
+    \clearpage
+    \input{\pwd/ingeneering}
+    \clearpage
+    \input{\pwd/implementation}
+    \clearpage
+    \input{\pwd/conclusion}
+    \clearpage
+    \input{\pwd/bibl}
+    \clearpage
+    \appendixtocon
+    \appendix
+    \renewcommand\thechapter{\Asbuk{chapter}}
+    \input{\pwd/appendices}
+\end{document}
