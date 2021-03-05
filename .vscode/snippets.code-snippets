@@ -1,4 +1,5 @@
 {
+    // Basic LaTeX snippets
     "rule": {
         "prefix": "\\rule",
         "body": [
@@ -16,8 +17,10 @@
         "prefix": "\\angles",
         "body": "\\langle $1 \\rangle$0"
     },
+    // Formatted inserting of common atrifacts
     "image": {
         "prefix": "image",
+        "description": "Вставка изображения, рисунка",
         "body": [
             "\\begin{figure}[ht]",
             "\t\\begin{center}",
@@ -31,6 +34,7 @@
     },
     "screen": {
         "prefix": "screen",
+        "description": "Вставка скриншота",
         "body": [
             "\\begin{figure}[ht]",
             "\t\\begin{center}",
@@ -42,16 +46,33 @@
             "$0"
         ]
     },
-    "listing": {
-        "prefix": "listing",
+    "listing-emb": {
+        "prefix": "listing-emb",
+        "description": "Вставка листинга с кодом непосредственно включённым в текст",
         "body": [
-            "\\begin{lstlisting}[label=Listing:$1,caption={$2}]",
+            "\\begin{lstlisting}[",
+            "\tlabel=Listing:$1,",
+            "\tcaption={$2},",
+            "\tlanguage=$3",
+            "]",
             "$0",
             "\\end{lstlisting}"
         ]
     },
+    "listing-src": {
+        "prefix": "listing-src",
+        "description": "Вставка листинга с кодом, расположенным в отдельном файле",
+        "body": [
+            "\\lstinputlisting[",
+            "\tlabel=Listing:$1,",
+            "\tcaption={$2},",
+            "\tlanguage=$3",
+            "]{\\pwd/$0}"
+        ]
+    },
     "table": {
         "prefix": "table",
+        "description": "Вставка таблицы с возможностью задания точной ширины каждого столбца",
         "body": [
             "\\begin{table}[ht]",
             "\\caption{$2}\\label{Table:$1}",
@@ -63,5 +84,4 @@
             "\\end{table}",
         ]
     }
-
 }

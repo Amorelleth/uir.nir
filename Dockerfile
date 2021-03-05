@@ -1,7 +1,7 @@
 FROM ubuntu:focal
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ trusty multiverse" | tee -a /etc/apt/sources.list.d/multiverse.list && \
+RUN echo "deb http://archive.ubuntu.com/ubuntu/ focal multiverse" | tee -a /etc/apt/sources.list.d/multiverse.list && \
    echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
 
 RUN apt update && \

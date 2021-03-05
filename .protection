@@ -1,0 +1,14 @@
+.vscode/settings.json
+.vscode/snippets.code-snippets
+library/examples.bib
+library/README.md
+papers
+papers-templates
+scripts
+styles
+templates
+tool
+.gitignore
+.gitlab-ci.yml
+Dockerfile
+README.md
