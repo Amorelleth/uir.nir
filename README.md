@@ -13,7 +13,7 @@
         python3 "${LATEX_PAPERS_ROOT_PATH}"/tool/lpt-tool.py $@
     }
     ```
-1. Уставите Visual Studio Code и расширение LaTeX Workshop.
+1. Установите *Visual Studio Code* и расширение *LaTeX Workshop*.
 1. Вызовите команду `lpt update` для проверки работы утилиты `lpt`.
 
 ## Создание документа
