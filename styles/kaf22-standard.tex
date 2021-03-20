@@ -12,19 +12,14 @@
 \usepackage{fontspec}
 \defaultfontfeatures{Ligatures=TeX}
 
-%\setromanfont{Charis SIL}
-%\setsansfont{Liberation Sans}
-%\setmonofont{PT Mono}
-%\setmainfont{Liberation Serif} % this allows to use sans-serif as default font
+\newfontfamily{\cyrillicfont}{Times New Roman}
+\setmainfont[Mapping=tex-text]{Times New Roman}
+\newfontfamily{\cyrillicfonttt}{Courier New}
+\setmonofont{Courier New}
 
-% \newfontfamily{\cyrillicfont}{Times New Roman}
-% \setmainfont[Mapping=tex-text]{Times New Roman}
-% \newfontfamily{\cyrillicfonttt}{Courier New}
-% \setmonofont{Courier New}
-
-\setmainfont{Linux Libertine O}
-\setsansfont{Linux Biolinum O}
-\setmonofont[SmallCapsFont={Latin Modern Mono Caps}]{Latin Modern Mono Light}
+% \setmainfont{Linux Libertine O}
+% \setsansfont{Linux Biolinum O}
+% \setmonofont[SmallCapsFont={Latin Modern Mono Caps}]{Latin Modern Mono Light}
 
 %нумерация справа и колонтитулы справа вверху
 \usepackage{fancyhdr}

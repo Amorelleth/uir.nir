@@ -6,6 +6,8 @@
 }
 \newcommand*{\consultant}[1]{\gdef\@consultant{#1}%
 }
+\newcommand*{\workyear}[1]{\gdef\@workyear{#1}%
+}
 \renewcommand*{\maketitle}{%
 \begin{titlepage}
 \centering
@@ -33,7 +35,7 @@
 
 \vspace{0.3cm}
 
-{\scshape\LARGE \textbf{Пояснительная записка}}
+{\scshape\Large \textbf{Пояснительная записка}}
 
 к учебно-исследовательской работе студента на тему:
 
@@ -71,9 +73,9 @@
 \begin{tabular}{cccc}
     \vspace{4mm}
     \specialcell{Оценка\\руководителя} & 
-    $\underset{\text{(0-15 баллов)}}{\underline{\hspace{4cm}}}$ & 
+    $\underset{\text{(0-30 баллов)}}{\underline{\hspace{4cm}}}$ & 
     \specialcell{Оценка\\консультанта} & 
-    $\underset{\text{(0-15 баллов)}}{\underline{\hspace{4cm}}}$ \\
+    $\underset{\text{(0-30 баллов)}}{\underline{\hspace{4cm}}}$ \\
 
     \vspace{4mm}
     Итоговая оценка &
@@ -109,7 +111,7 @@
 \end{spacing}
 \vfill
 
-{\large\textbf{Москва 2020}\par}
+{\large\textbf{Москва \@workyear}\par}
 \end{titlepage}
 }
 \endinput
