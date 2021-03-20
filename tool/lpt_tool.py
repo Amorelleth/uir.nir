@@ -2,16 +2,21 @@ import subprocess
 import argparse
 import os
 
-LPT_PATH=os.getenv("LATEX_PAPERS_ROOT_PATH")
+LPT_PATH=os.path.abspath(f"{os.path.dirname(os.path.abspath(__file__))}/../")
 
 def exec_cmd(cmd):
     cmd_process = subprocess.run(
-        cmd
+        cmd,
+        stderr=subprocess.STDOUT
     )
-    return str(cmd_process.stdout)
+    return cmd_process
+
+def get_version():
+    with open(f"{LPT_PATH}/.version", "r") as v:
+        return v.read()
 
 parser = argparse.ArgumentParser(
-    description="Latex Papers Tool for automation your work under papers"
+    description=f"Latex Papers Tool v{get_version()}"
 )
 
 subparsers = parser.add_subparsers(
@@ -25,7 +30,7 @@ def update(args):
 
 update_parser = subparsers.add_parser(
     "update", 
-    help="pull all changes from parent Latex Papers Template repository",
+    help="pull all changes from root Latex Papers Template repository",
 )
 update_parser.set_defaults(func=update)
 
@@ -77,5 +82,38 @@ list_templates_parser.set_defaults(func=list_templates)
 # )
 # check_protection_parser.set_defaults(func=check_protection)
 
+# --- BUILD ---
+
+def build(args):
+    doc_abs_path = args.document
+    doc_parts = doc_abs_path.split('/')
+    delim_index = -1
+    for i, item in enumerate(doc_parts):
+        if item == "latex-papers-template":
+            delim_index = i
+    doc = '/'.join(doc_parts[delim_index+1:])
+    if not doc.endswith(".tex"):
+        doc += ".tex"
+    dirname = '/'.join(doc_parts[delim_index+1:-1])
+    image = "deralusws/latex-papers-template-image:1.0"
+    exec_cmd([
+        "docker", "run", "--rm", "-i", "-v", f"{LPT_PATH}:/data", image,
+        "latexmk", "-synctex=1", "-interaction=nonstopmode", "-file-line-error", "-xelatex", f"-outdir={dirname}/out", f"{doc}"
+    ])
+
+build_parser = subparsers.add_parser(
+    "build",
+    help="builds latex document"
+)
+build_parser.add_argument(
+    "document",
+    help="path to root latex document file"
+)
+build_parser.set_defaults(func=build)
+
 args = parser.parse_args()
-args.func(args)
+try:
+    args.func(args)
+except Exception as e:
+    print(e)
+    parser.print_help()

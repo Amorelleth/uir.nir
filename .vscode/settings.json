@@ -5,19 +5,19 @@
     "latex-workshop.latex.outDir": "%DIR%/out",
     "latex-workshop.latex.recipes": [
         {
-            "name": "using docker",
+            "name": "using lpt",
             "tools": [
-                "dockerized-latex"
+                "lpt"
             ]
         }
     ],
     "latex-workshop.latex.tools": [
         {
-            "name": "dockerized-latex",
-            "command": "make",
+            "name": "lpt",
+            "command": "lpt",
             "args": [
-                "dir=%DIR%",
-                "doc=%DOC%"
+                "build",
+                "%DOC%"
             ]
         }
     ]
