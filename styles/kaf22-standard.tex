@@ -135,9 +135,12 @@
 \renewcommand{\labelenumiii}{\theenumi.\theenumii.\theenumiii.}
 \renewcommand{\labelenumiv}{\theenumi.\theenumii.\theenumiii.\theenumiv.}
 
-%\newenvironment{annotation}{\textbf{Аннотация.} \textit}{}
-\theoremstyle{plain}
-\newtheorem*{annotation}{Аннотация}
+\newenvironment{annotation}{}{}
+\usepackage{ifthen}
+\usepackage{environ}
+\ifthenelse{\equal{\showannotation}{false}}{
+    \RenewEnviron{annotation}{}
+}{}
 
 \usepackage{listingsutf8}
 
