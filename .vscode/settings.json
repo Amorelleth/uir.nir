@@ -14,10 +14,10 @@
     "latex-workshop.latex.tools": [
         {
             "name": "lpt",
-            "command": "lpt",
+            "command": "bash",
             "args": [
-                "build",
-                "%DOC%"
+                "-c",
+                "$(pwd)/../../run.sh build %DOC%"
             ]
         }
     ]

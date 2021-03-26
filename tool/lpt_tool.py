@@ -89,7 +89,8 @@ def build(args):
     doc_parts = doc_abs_path.split('/')
     delim_index = -1
     for i, item in enumerate(doc_parts):
-        if item == "latex-papers-template":
+        del_item_name = LPT_PATH.split('/')[-1]
+        if item == del_item_name:
             delim_index = i
     doc = '/'.join(doc_parts[delim_index+1:])
     if not doc.endswith(".tex"):
