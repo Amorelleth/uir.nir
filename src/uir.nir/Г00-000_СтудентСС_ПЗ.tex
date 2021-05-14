@@ -1,0 +1,62 @@
+\documentclass[12pt,a4paper,oneside,final]{report}
+
+\newcommand{\pwd}{src/uir.nir}
+\def\showannotation{false}
+
+\input{styles/kaf22-standard}
+
+\usepackage{styles/kaf22-title-uir-pz}
+\usepackage{amsmath}
+%Точка после номера раздела TODO что-то не работает
+\usepackage{misccorr}
+
+\author{Козловская А. А.}
+\title{Применение природных алгоритмов при фильтрации нежелательных рассылок}
+\techgroup{Б18-505}
+\teacher{Куприяшин М. А.}
+\consultant{}
+\workyear{2021}
+
+\begin{document}
+\maketitle
+\setcounter{page}{2}
+
+% реферат
+\clearpage
+\input{\pwd/abstract}
+
+% содержание
+\clearpage
+\tableofcontents{}
+
+% введение
+\clearpage
+\input{\pwd/intro}
+
+% обзор на фильтрацию
+\clearpage
+\input{\pwd/filtering}
+
+% обзор на алгоритмы МО
+\clearpage
+\input{\pwd/machine-learning}
+
+% обзор на природные алгоритмы
+% \clearpage
+% \input{\pwd/bio-inspired}
+
+% заключение
+\clearpage
+\input{\pwd/conclusion}
+
+% списоккк источников
+\clearpage
+\input{\pwd/bibl}
+
+\clearpage
+
+\appendixtocon
+\appendix
+\renewcommand\thechapter{\Asbuk{chapter}}
+\input{\pwd/appendices}
+\end{document}

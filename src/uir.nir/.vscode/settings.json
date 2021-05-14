@@ -1,8 +1,16 @@
 {
-    "latex-workshop.latex.autoBuild.run": "never",
+    // "latex-workshop.latexindent.args": [
+    //     "-c",
+    //     "%DIR%/",
+    //     "%TMPFILE%",
+    //     "-y=defaultIndent: '%INDENT%'"
+    // ],
+    "latex-workshop.latex.autoBuild.run": "onSave",
     "latex-workshop.bibtex-format.sort.enabled": true,
     "latex-workshop.bibtex-format.tab": "4 spaces",
     "latex-workshop.latex.outDir": "%DIR%/out",
+    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.latex.recipes": [
         {
             "name": "using lpt",
