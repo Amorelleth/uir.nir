@@ -38,6 +38,9 @@
 \usepackage{longtable}
 \usepackage{tabu}
 \usepackage{indentfirst}
+\usepackage{float}
+\usepackage{graphicx}
+\newcolumntype{P}[1]{>{\linespread{1.5}}{p{#1}}
 
 %Точка после номера раздела
 \usepackage{misccorr}
@@ -48,43 +51,61 @@
 
 \usepackage{./styles/pstheorems}
 
+\usepackage{lipsum}
+\usepackage{enumitem}
+\setlength{\parindent}{12.5mm}
+\setlength{\baselineskip}{1.5em}
+\setlist[enumerate]{wide,topsep=0pt,itemsep=0pt,partopsep=0pt,parsep=0pt}
+\setlist[itemize]{wide,topsep=0pt,itemsep=0pt,labelsep=7.5mm,partopsep=0pt,parsep=0pt}
+% \setlist[itemize]{leftmargin=*}
+% \setlist[enumrate]{leftmargin=*}
+
 % Настройка списков (без лишних вертикальных отступов)
-\usepackage{paralist}
-\setdefaultenum{1.}{1.}{1.}{1.}
-\setdefaultitem{{}--{}}{}{}{}
-%\setlength\itemsep{-1em}
-\let\itemize\compactitem
-\let\enditemize\endcompactitem
-\let\enumerate\compactenum
-\let\endenumerate\endcompactenum
-\let\description\compactdesc
-\let\enddescription\endcompactdesc
-\pltopsep=\smallskipamount
-\plitemsep=0pt
-\plparsep=0pt
+% \usepackage{paralist}
+% \setdefaultenum{1.}{1.}{1.}{1.}
+% % \setdefaultitem{{}--{}}{}{}{}
+% \setdefaultleftmargin{2cm}{2cm}{}{}{}{}
+% % \setlength\itemsep{-1em}
+% \let\itemize\compactitem
+% \let\enditemize\endcompactitem
+% \let\enumerate\compactenum
+% \let\endenumerate\endcompactenum
+% \let\description\compactdesc
+% \let\enddescription\endcompactdesc
+% \pltopsep=\smallskipamount
+% \plitemsep=0pt
+% \plparsep=0pt
 % Команда для отмены разрыва страниц перед списками
 \makeatletter
 \newcommand\mynobreakpar{\par\nobreak\@afterheading}
 \makeatother
 %%%%%%
 
+
+
 \usepackage[singlelinecheck=false,labelsep=endash]{caption}
 \captionsetup[table]{justification=justified}
 \captionsetup[figure]{justification=centering}
 
 \usepackage{titlesec}
-\titleformat{\chapter}[block]{\centering\normalfont\Large\bfseries}{\thechapter.}{1ex}{}{}
+\titleformat{\chapter}[block]{\centering\normalfont\bfseries}{\MakeUppercase{\chaptertitlename}\ \thechapter}{1ex}{\MakeUppercase}
 \titlespacing{\chapter}{0pt}{\parskip}{-\parskip}%{0em}{2em}
 
-\titleformat{\section}[block]{\normalfont\large\bfseries}{\thesection.}{1ex}{}{}
-\titlespacing{\section}{0pt}{\parskip}{-\parskip}%{0em}{1ex}
+\titleformat{\section}[block]{\normalfont\bfseries}{\thesection}{1ex}{}{}
+\titlespacing{\section}{12.5mm}{\parskip}{-\parskip}%{0em}{1ex}
 
-\titleformat{\subsection}[block]{\normalfont\normalsize\bfseries}{\thesubsection.}{1ex}{}{}
-\titlespacing{\subsection}{0pt}{\parskip}{-\parskip}%{0em}{1ex}
+\titleformat{\subsection}[block]{\normalfont\bfseries}{\thesubsection}{1ex}{}{}
+\titlespacing{\subsection}{12.5mm}{\parskip}{-\parskip}%{0em}{1ex}
 
+\titleformat{\subsubsection}[block]{\normalfont\bfseries}{\thesubsubsection}{1ex}{}{}
+\titlespacing{\subsubsection}{12.5mm}{\parskip}{-\parskip}%{0em}{1ex}
 % paragraph и subparagraph -- в тексте, без отступов
-\titleformat{\paragraph}[runin]{\normalfont\normalsize\bfseries}{\theparagraph}{0pt}{}{}
-\titlespacing{\paragraph}{0pt}{0em}{0ex}
+
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}[block]{\normalfont\normalsize\bfseries}{\theparagraph}{1ex}{}{}
+\titlespacing{\paragraph}{12.5mm}{\parskip}{-\parskip}%{0em}{1ex}
+
 
 \titleformat{\subparagraph}[runin]{\normalfont\normalsize\bfseries}{\thesubparagraph}{0pt}{}{}
 \titlespacing{\subparagraph}{0pt}{0em}{0ex}
@@ -97,9 +118,6 @@
   {Содержание}%
 }
 
-%\renewcommand{\appendixname}{Приложение}% Change "chapter name" for Appendix chapters
-%\renewcommand{\cftchapdotsep}{\cftdotsep}
-
 \usepackage{./styles/mathpartir}
 
 \makeatletter
@@ -108,10 +126,14 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyfoot[C]{\thepage}
+
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\theparagraph}{\arabic{paragraph}}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \renewcommand{\baselinestretch}{1.5}
-\newcommand{\headertext}[1]{\fancyhead[R]{\tiny{#1}}}
+\newcommand{\headertext}[1]{\f
+ancyhead[R]{\tiny{#1}}}
 
 %% Список литературы
 
@@ -244,7 +266,7 @@ literate={Ö}{{\"O}}1
 
 
 \headertext{}
-\addto{\captionsrussian}{\renewcommand{\bibname}{Список литературы}}
+\addto{\captionsrussian}{\renewcommand{\bibname}{Список использованных источников}}
 
 \usepackage{lastpage}
 

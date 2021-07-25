@@ -1,33 +1,34 @@
-\documentclass[12pt,a4paper,oneside,final]{report}
+\documentclass[14pt,a4paper,oneside,final]{extreport}
 
 \newcommand{\pwd}{src/uir.nir}
+
 \def\showannotation{false}
 
 \input{styles/kaf22-standard}
 
-\usepackage{styles/kaf22-title-uir-pz}
 \usepackage{amsmath}
-%Точка после номера раздела TODO что-то не работает
-\usepackage{misccorr}
-
-\author{Козловская А. А.}
-\title{Применение природных алгоритмов при фильтрации нежелательных рассылок}
-\techgroup{Б18-505}
-\teacher{Куприяшин М. А.}
-\consultant{}
-\workyear{2021}
 
 \begin{document}
+\renewcommand{\figurename}{Рисунок}
+\renewcommand{\arraystretch}{1.5}
+
 \maketitle
+
+\includepdf[pages={1}]{\pwd/title.pdf}
+
 \setcounter{page}{2}
 
 % реферат
-\clearpage
+\clearpages
 \input{\pwd/abstract}
 
 % содержание
 \clearpage
 \tableofcontents{}
+
+% Определения, обозначения, сокращения
+\clearpage
+\input{\pwd/definitions}
 
 % введение
 \clearpage
@@ -42,14 +43,22 @@
 \input{\pwd/machine-learning}
 
 % обзор на природные алгоритмы
-% \clearpage
-% \input{\pwd/bio-inspired}
+\clearpage
+\input{\pwd/bio-inspired}
+
+% оценка производительности
+\clearpage
+\input{\pwd/performance}
+
+% эксперимент
+\clearpage
+\input{\pwd/experiment}
 
 % заключение
 \clearpage
 \input{\pwd/conclusion}
 
-% списоккк источников
+% список источников
 \clearpage
 \input{\pwd/bibl}
 
@@ -58,5 +67,5 @@
 \appendixtocon
 \appendix
 \renewcommand\thechapter{\Asbuk{chapter}}
-\input{\pwd/appendices}
+% \input{\pwd/appendices}
 \end{document}
