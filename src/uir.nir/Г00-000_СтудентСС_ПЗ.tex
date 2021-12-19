@@ -1,7 +1,5 @@
 \documentclass[14pt,a4paper,oneside,final]{extreport}
 
-\newcommand{\pwd}{src/uir.nir}
-
 \def\showannotation{false}
 
 \input{styles/kaf22-standard}
@@ -12,15 +10,15 @@
 \renewcommand{\figurename}{Рисунок}
 \renewcommand{\arraystretch}{1.5}
 
-\maketitle
+%\maketitle
 
-\includepdf[pages={1}]{\pwd/title.pdf}
+\includepdf[pages={1}]{title.pdf}
 
 \setcounter{page}{2}
 
 % реферат
 \clearpages
-\input{\pwd/abstract}
+\input{abstract}
 
 % содержание
 \clearpage
@@ -28,39 +26,39 @@
 
 % Определения, обозначения, сокращения
 \clearpage
-\input{\pwd/definitions}
+\input{definitions}
 
 % введение
 \clearpage
-\input{\pwd/intro}
+\input{intro}
 
 % обзор на фильтрацию
 \clearpage
-\input{\pwd/filtering}
+\input{filtering}
 
 % обзор на алгоритмы МО
 \clearpage
-\input{\pwd/machine-learning}
+\input{machine-learning}
 
 % обзор на природные алгоритмы
 \clearpage
-\input{\pwd/bio-inspired}
+\input{bio-inspired}
 
 % оценка производительности
 \clearpage
-\input{\pwd/performance}
+\input{performance}
 
 % эксперимент
 \clearpage
-\input{\pwd/experiment}
+\input{experiment}
 
 % заключение
 \clearpage
-\input{\pwd/conclusion}
+\input{conclusion}
 
 % список источников
 \clearpage
-\input{\pwd/bibl}
+\input{bibl}
 
 \clearpage
 
