@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  22 DEC 2021 10:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  22 DEC 2021 10:14
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -31,28 +31,67 @@ LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen139
-)
+) (/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/styles/kaf22-standard.tex (/usr/local/texlive/2021/texmf-dist/tex/latex/polyglossia/polyglossia.sty
+Package: polyglossia 2021/03/16 v1.52 Modern multilingual typesetting with XeLaTeX and LuaLaTeX
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count188
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/makecmds/makecmds.sty
+Package: makecmds 2009/09/03 v1.0a extra command making commands
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2020/11/20 v2.8 package option processing (HA)
+ (/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks15
+\XKV@tempa@toks=\toks16
+ (/usr/local/texlive/2021/texmf-dist/tex/generic/xkeyval/keyval.tex))
+\XKV@depth=\count189
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/fontspec/fontspec.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-02-18 L3 programming layer (loader) 
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-03-18 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count190
+\l__pdf_internal_box=\box47
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-2020-10-01.sty (/usr/local/texlive/2021/texmf-dist/tex/latex/l3packages/xparse/xparse-generic.tex)))
+Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
 
-! LaTeX Error: File `styles/kaf22-standard.tex' not found.
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: tex)
+/usr/local/texlive/2021/texmf-dist/tex/latex/fontspec/fontspec.sty:45: Fatal Package fontspec Error: The fontspec package requires either XeTeX or
+(fontspec)                      LuaTeX.
+(fontspec)                      
+(fontspec)                      You must change your typesetting engine to,
+(fontspec)                      e.g., "xelatex" or "lualatex"instead of
+(fontspec)                      "latex" or "pdflatex".
 
-Enter file name: 
-/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex:7: Emergency stop.
+Type <return> to continue.
+ ...                                              
+                                                  
+l.45 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
+                                                 
+
+LaTeX does not know anything more about this error, sorry.
+
+Try typing <return> to proceed.
+If that doesn't work, type X <return> to quit.
+
+This is a fatal error: LaTeX will abort.
+
+
+
+/usr/local/texlive/2021/texmf-dist/tex/latex/fontspec/fontspec.sty:45: Emergency stop.
 <read *> 
          
-l.7 \input{styles/kaf22-standard}
-                                 ^^M
+l.45 \msg_fatal:nn {fontspec} {cannot-use-pdftex}
+                                                 
 *** (cannot \read from terminal in nonstop modes)
 
  
 Here is how much of TeX's memory you used:
- 266 strings out of 478994
- 5276 string characters out of 5858184
- 286055 words of memory out of 5000000
- 17835 multiletter control sequences out of 15000+600000
+ 1051 strings out of 478994
+ 19343 string characters out of 5858184
+ 307110 words of memory out of 5000000
+ 18575 multiletter control sequences out of 15000+600000
  403728 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 53i,0n,60p,272b,36s stack positions out of 5000i,500n,10000p,200000b,80000s
-/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex:7:  ==> Fatal error occurred, no output PDF file produced!
+ 100i,0n,106p,421b,44s stack positions out of 5000i,500n,10000p,200000b,80000s
+/usr/local/texlive/2021/texmf-dist/tex/latex/fontspec/fontspec.sty:45:  ==> Fatal error occurred, no output PDF file produced!
