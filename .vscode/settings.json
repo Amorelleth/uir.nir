@@ -1,0 +1,7 @@
+{
+    "latex-workshop.latex.autoBuild.run": "onSave",
+    "latex-workshop.bibtex-format.sort.enabled": true,
+    "latex-workshop.bibtex-format.tab": "4 spaces",
+    "latex-workshop.latexindent.path": "/Library/TeX/texbin/latexindent",
+    "latex-workshop.view.pdf.viewer": "tab",
+}
