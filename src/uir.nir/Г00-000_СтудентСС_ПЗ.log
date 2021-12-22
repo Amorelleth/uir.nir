@@ -1,0 +1,58 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.10.7)  22 DEC 2021 10:07
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex
+(/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18> (/usr/local/texlive/2021/texmf-dist/tex/latex/extsizes/extreport.cls
+Document Class: extreport 1996/10/08 v1.0 Non Standard LaTeX document class
+(/usr/local/texlive/2021/texmf-dist/tex/latex/extsizes/size14.clo
+File: size14.clo 1999/11/11 v1.4a NON-Standard LaTeX file (size option)
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/base/exscale.sty
+Package: exscale 2018/09/24 v2.1i Standard LaTeX package exscale
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/cmex/m/n on input line 57.
+\big@size=\dimen138
+)
+\c@part=\count179
+\c@chapter=\count180
+\c@section=\count181
+\c@subsection=\count182
+\c@subsubsection=\count183
+\c@paragraph=\count184
+\c@subparagraph=\count185
+\c@figure=\count186
+\c@table=\count187
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen139
+)
+
+! LaTeX Error: File `styles/kaf22-standard.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex:7: Emergency stop.
+<read *> 
+         
+l.7 \input{styles/kaf22-standard}
+                                 ^^M
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 266 strings out of 478994
+ 5276 string characters out of 5858184
+ 286055 words of memory out of 5000000
+ 17835 multiletter control sequences out of 15000+600000
+ 403728 words of font info for 28 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 53i,0n,60p,272b,36s stack positions out of 5000i,500n,10000p,200000b,80000s
+/Users/annakozlovskaa/study-works/nirrrr/uir.nir/src/uir.nir/Г00-000_СтудентСС_ПЗ.tex:7:  ==> Fatal error occurred, no output PDF file produced!

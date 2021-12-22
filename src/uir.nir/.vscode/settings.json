@@ -22,11 +22,11 @@
     "latex-workshop.latex.tools": [
         {
             "name": "lpt",
-            "command": "bash",
-            "args": [
-                "-c",
-                "$(pwd)/../../run.sh build %DOC%"
-            ]
+            "command": "latexmk -xelatex Г00-000_СтудентСС_ПЗ.tex",
+            // "args": [
+            //     "-c",
+            //     "$(pwd)/../../run.sh build %DOC%"
+            // ]
         }
     ]
 }

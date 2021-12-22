@@ -1,0 +1,63 @@
+\section{Полученные результаты}
+
+
+% 0.3 ling\_spam
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|p{0.13\textwidth}|p{0.18\textwidth}|p{0.06\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|}
+        \hline
+        Алгоритм & Данные     & Тест & Accuracy & Precision & Recall  & F1-score \\ \hline
+        AO       & ling\_spam & 30\% & 99.31\%  & 99.36\%   & 96.05\% & 97.80\%  \\ \hline
+        HGS      & ling\_spam & 30\% & 99.19\%  & 99.35\%   & 95.76\% & 97.64\%  \\ \hline
+        SSA      & ling\_spam & 30\% & 93.95\%  & 100\%     & 74.00\% & 77.85\%  \\ \hline
+        MRFO     & ling\_spam & 30\% & 99.19\%  & 99.32\%   & 95.51\% & 97.45\%  \\ \hline
+        RSCV     & ling\_spam & 30\% & 99.10\%  & 99.35\%   & 95.77\% & 97.55\%  \\ \hline
+    \end{tabular}
+\end{table}
+
+% 0.3 enron
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|p{0.13\textwidth}|p{0.18\textwidth}|p{0.06\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|}
+        \hline
+        Алгоритм & Данные & Тест & Accuracy & Precision & Recall  & F1-score \\ \hline
+        AO       & enron  & 30\% & 98.84\%  & 98.07\%   & 99.68\% & 98.87\%  \\ \hline
+        HGS      & enron  & 30\% & 98.86\%  & 98.12\%   & 99.68\% & 98.89\%  \\ \hline
+        SSA      & enron  & 30\% & 73.37\%  & 70.85\%   & 74.36\% & 66.12\%  \\ \hline
+        MRFO     & enron  & 30\% & 98.86\%  & 98.11\%   & 99.68\% & 98.89\%  \\ \hline
+        RSCV     & enron  & 30\% & 97.36\%  & 96.02\%   & 99.61\% & 97.65\%  \\ \hline
+    \end{tabular}
+\end{table}
+
+% 0.3 spam_assasin
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|p{0.13\textwidth}|p{0.18\textwidth}|p{0.06\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|}
+        \hline
+        Алгоритм & Данные        & Тест & Accuracy & Precision & Recall  & F1-score \\ \hline
+        AO       & spam\_assasin & 30\% & 97.95\%  & 99.11\%   & 92.94\% & 95.90\%  \\ \hline
+        HGS      & spam\_assasin & 30\% & 97.99\%  & 99.10\%   & 93.06\% & 95.97\%  \\ \hline
+        SSA      & spam\_assasin & 30\% & 86.21\%  & 98.63\%   & 61.61\% & 64.40\%  \\ \hline
+        MRFO     & spam\_assasin & 30\% & 97.97\%  & 99.07\%   & 93.04\% & 95.97\%  \\ \hline
+        RSCV     & spam\_assasin & 30\% & 97.86\%  & 98.99\%   & 92.57\% & 95.73\%  \\ \hline
+    \end{tabular}
+\end{table}
+
+% 0.25 enron 
+\begin{table}[!ht]
+    \centering
+    \begin{tabular}{|p{0.13\textwidth}|p{0.18\textwidth}|p{0.06\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.10\textwidth}|p{0.12\textwidth}|}
+        \hline
+        Алгоритм & Данные & Тест & Accuracy & Precision & Recall  & F1-score \\ \hline
+        AO       & enron  & 25\% & 98.87\%  & 98.13\%   & 99.67\% & 98.89\%  \\ \hline
+        HGS      & enron  & 25\% & 98.86\%  & 98.12\%   & 99.67\% & 98.89\%  \\ \hline
+        SSA      & enron  & 25\% & 77.83\%  & 80.55\%   & 82.68\% & 74.69\%  \\ \hline
+        MRFO     & enron  & 25\% & 98.84\%  & 98.08\%   & 99.68\% & 98.87\%  \\ \hline
+        RSCV     & enron  & 25\% & 98.06\%  & 96.77\%   & 99.65\% & 98.16\%  \\ \hline
+    \end{tabular}
+\end{table}
+
+
+% — Программный комплекс для проведения экспериментов 
+% — Набор экспериментальных метрик для каждого алгоритма, на основе которых можно выявить наиболее эффективный из предложенных алгоритмов
+% — Выводы из сравнения алгоритмов

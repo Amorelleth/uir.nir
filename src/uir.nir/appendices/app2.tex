@@ -1,0 +1,188 @@
+\chapter*{Приложение Б}\label{App2}
+
+\begin{lstlisting}
+
+#!/usr/bin/python3
+
+import os.path
+import csv
+import numpy as np
+import pandas as pd
+import time
+
+from sklearn.model_selection import train_test_split, RandomizedSearchCV
+from sklearn.metrics import accuracy_score, precision_score
+from sklearn.metrics import recall_score, f1_score
+from sklearn.linear_model import SGDClassifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+from mealpy.swarm_based import AO, HGS, SSA, MRFO
+from nltk.corpus import stopwords
+
+# bio optimization algorithms
+ALGS = ['AO', 'HGS', 'SSA', 'MRFO', 'RSCV']
+
+# log fields
+FIELDS = ['alg', 'data', 'test-size', 'time',
+            'accuracy', 'precision', 'recall', 'f1-score']
+
+# iterations number
+ITERS = 100
+
+# dataset name
+DATASET = 'enron'
+
+# size of test part of dataset
+SIZE = 0.25
+
+
+def resolve_clf(alg):
+    if alg == 'AO':
+        return AO.OriginalAO
+    elif alg == 'HGS':
+        return HGS.OriginalHGS
+    elif alg == 'SSA':
+        return SSA.BaseSSA
+    elif alg == 'MRFO':
+        return MRFO.BaseMRFO
+
+
+def test_bio_alg(clf, obj_function):
+    problem = {
+        'obj_func': obj_function,
+        'lb': [0.0001, 0.0001, 0.0001],
+        'ub': [1000, 1000, 1000],
+        'minmax': 'max',
+        'verbose': True,
+    }
+
+    model = clf(problem, epoch=10, pop_size=50)
+    model.solve()
+    t = sum(model.history.list_epoch_time)
+
+    return [model.g_best, t]
+
+
+def main():
+    for alg in ALGS:
+
+        alpha = 0.0001
+        epsilon = 0.0001
+        tol = 0.0001
+
+        with open(r'log_new.csv', 'a') as f:
+            writer = csv.writer(f)
+
+            if not os.path.isfile('log_new.csv') or \
+                    os.path.getsize('log_new.csv') == 0:
+                writer.writerow(FIELDS)
+
+            # load dataset
+            df = pd.read_csv(f'./input/{DATASET}/messages.csv')
+            df = df.fillna(' ')
+
+            X = np.array(df['message'])
+            y = np.array(df['label'])
+
+            sum_acc = 0
+            sum_prec = 0
+            sum_recall = 0
+            sum_f1 = 0
+            sum_t = 0
+
+            for iter in range(0, ITERS):
+                print("Iter", iter)
+                t = 0
+                y_pred = []
+
+                # split dataset
+                X_train, X_test, y_train, y_test = train_test_split(
+                    X, y, test_size=SIZE)
+
+                # tokenization
+                cv = TfidfVectorizer(stop_words=stopwords.words('english'))
+                X_train = cv.fit_transform(X_train)
+                X_test = cv.transform(X_test)
+
+                # random search
+                if alg == 'RSCV':
+                    tuned_parameters = {
+                        'epsilon': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                        'alpha': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                        'tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
+                    }
+
+                    t = time.time()
+                    clf = SGDClassifier()
+                    model = RandomizedSearchCV(clf, tuned_parameters)
+                    model.fit(X_train, y_train)
+                    y_pred = model.predict(X_test)
+                    t = time.time() - t
+                    print(model.best_params_)
+
+                # bio optimization
+                elif alg in ALGS:
+                    def obj_function(solution):
+                        alpha, epsilon, tol = solution
+                        clf = SGDClassifier(
+                            alpha=alpha, epsilon=epsilon, tol=tol)
+                        clf.fit(X_train, y_train)
+                        y_pred = clf.predict(X_test)
+
+                        # print best params
+                        # print(
+                        #     f'Alpha={alpha} Epsilon={epsilon} tol={tol} \
+                        #         Acc score: {accuracy_score(y_test, y_pred)}')
+
+                        return accuracy_score(y_test, y_pred)
+
+                    c = resolve_clf(alg)
+                    best_params_, t = test_bio_alg(c, obj_function)
+                    print(best_params_)
+                    alpha, epsilon, tol = best_params_[0]
+
+                    clf = SGDClassifier(
+                        alpha=alpha, epsilon=epsilon, tol=tol)
+                    clf.fit(X_train, y_train)
+                    y_pred = clf.predict(X_test)
+
+                    # print best params
+                    # print(f'Best with: ', f'{best_params_}'.rjust(29, ' '))
+
+                # default parameters
+                else:
+                    clf = SGDClassifier()
+                    t = time.time()
+                    clf.fit(X_train, y_train)
+                    y_pred = clf.predict(X_test)
+                    t = time.time() - t
+
+                acc = accuracy_score(y_test, y_pred)
+                prec = precision_score(y_test, y_pred)
+                recall = recall_score(y_test, y_pred)
+                f1 = f1_score(y_test, y_pred)
+
+                sum_acc += acc
+                sum_prec += prec
+                sum_recall += recall
+                sum_f1 += f1
+                sum_t += t
+
+            # calc average metrics
+            avg_acc = sum_acc / ITERS
+            avg_prec = sum_prec / ITERS
+            avg_recall = sum_recall / ITERS
+            avg_f1 = sum_f1 / ITERS
+            avg_t = sum_t / ITERS
+
+            # write result row
+            writer.writerow([alg, DATASET, SIZE, avg_t, avg_acc,
+                            avg_prec, avg_recall, avg_f1])
+
+        f.close()
+
+
+if __name__ == '__main__':
+    main()    
+
+\end{lstlisting}
