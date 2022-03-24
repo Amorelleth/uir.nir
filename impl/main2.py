@@ -1,12 +1,10 @@
-\chapter*{Приложение Б}\label{App2}
-\begin{center}Код программы для проведения эксперимента\end{center}
-\begin{lstlisting}
 #!/usr/bin/python3
 
 import os.path
 import csv
 import numpy as np
 import pandas as pd
+import time
 
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
 from sklearn.metrics import accuracy_score, precision_score
@@ -20,17 +18,18 @@ import statistics
 
 # bio optimization algorithms
 BIO_ALGS = ['AO', 'HGS', 'SSA', 'MRFO']
+# ALGS = 'RSCV'
 ALGS = BIO_ALGS + ['RSCV', 'DEFAULT']
 
 # log fields
-FIELDS = ['Алгоритм', 'Данные', 'Accuracy',
-            'Precision', 'Recall', 'F1-score']
+FIELDS = ['alg', 'data', 'test-size', 'time', 'accuracy',
+          'precision', 'recall', 'f1-score']
 
 # iterations number
 ITERS = 100
 
 # dataset name
-DATASET = 'ling_spam'
+DATASET = 'enron'
 
 # size of test part of dataset
 SIZE = 0.25
@@ -59,9 +58,12 @@ def test_bio_alg(clf, obj_function):
         'minmax': 'max',
         'verbose': True,
     }
-    model = clf(problem, epoch=10, pop_size=50)
+
+    model = clf(problem, epoch=10, pop_size=40)
     model.solve()
-    return model.g_best
+    t = sum(model.history.list_epoch_time)
+
+    return [model.g_best, t]
 
 
 def main():
@@ -93,7 +95,6 @@ def main():
 
             for iter in range(0, ITERS):
                 print("Iter", iter)
-
                 t = 0
                 y_pred = []
 
@@ -114,11 +115,14 @@ def main():
                         'tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
                     }
 
+                    t = time.time()
                     clf = SGDClassifier()
                     model = RandomizedSearchCV(
                         clf, tuned_parameters, scoring="f1")
                     model.fit(X_train, y_train)
                     y_pred = model.predict(X_test)
+                    t = time.time() - t
+                    print(model.best_params_)
 
                 # bio optimization
                 elif alg in BIO_ALGS:
@@ -137,7 +141,8 @@ def main():
                         return f1_score(y_test, y_pred)
 
                     c = resolve_clf(alg)
-                    best_params_ = test_bio_alg(c, obj_function)
+                    best_params_, t = test_bio_alg(c, obj_function)
+                    print(best_params_)
                     alpha, epsilon, tol = best_params_[0]
 
                     clf = SGDClassifier(
@@ -151,34 +156,38 @@ def main():
                 # default parameters
                 else:
                     clf = SGDClassifier()
+                    t = time.time()
                     clf.fit(X_train, y_train)
                     y_pred = clf.predict(X_test)
+                    t = time.time() - t
 
                 acc = accuracy_score(y_test, y_pred)
                 prec = precision_score(y_test, y_pred)
                 recall = recall_score(y_test, y_pred)
                 f1 = f1_score(y_test, y_pred)
+                print("ACC", acc)
+                print("F1", f1)
 
                 sum_acc += [acc]
                 sum_prec += [prec]
                 sum_recall += [recall]
                 sum_f1 += [f1]
+                sum_t += [t]
 
             # calc average metrics
+            print(sum_acc)
             avg_acc = statistics.median(sum_acc)
             avg_prec = statistics.median(sum_prec)
             avg_recall = statistics.median(sum_recall)
             avg_f1 = statistics.median(sum_f1)
+            avg_t = statistics.median(sum_t)
 
             # write result row
-            writer.writerow([alg, DATASET, format_precent(avg_acc),
-                            format_precent(avg_prec), format_precent(
-                                avg_recall),
-                            format_precent(avg_f1)])
+            writer.writerow([alg, DATASET, SIZE, avg_t, format_precent(avg_acc),
+                            format_precent(avg_prec), format_precent(avg_recall), format_precent(avg_f1)])
 
         f.close()
 
 
 if __name__ == '__main__':
-main()
-\end{lstlisting}
+    main()

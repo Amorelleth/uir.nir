@@ -1,6 +1,3 @@
-\chapter*{Приложение Б}\label{App2}
-\begin{center}Код программы для проведения эксперимента\end{center}
-\begin{lstlisting}
 #!/usr/bin/python3
 
 import os.path
@@ -24,7 +21,7 @@ ALGS = BIO_ALGS + ['RSCV', 'DEFAULT']
 
 # log fields
 FIELDS = ['Алгоритм', 'Данные', 'Accuracy',
-            'Precision', 'Recall', 'F1-score']
+          'Precision', 'Recall', 'F1-score']
 
 # iterations number
 ITERS = 100
@@ -59,7 +56,7 @@ def test_bio_alg(clf, obj_function):
         'minmax': 'max',
         'verbose': True,
     }
-    model = clf(problem, epoch=10, pop_size=50)
+    model = clf(problem, epoch=10, pop_size=40)
     model.solve()
     return model.g_best
 
@@ -180,5 +177,4 @@ def main():
 
 
 if __name__ == '__main__':
-main()
-\end{lstlisting}
+    main()
