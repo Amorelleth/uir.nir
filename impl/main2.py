@@ -4,39 +4,28 @@ import os.path
 import csv
 import numpy as np
 import pandas as pd
-import time
 
 from sklearn.model_selection import train_test_split, RandomizedSearchCV
-from sklearn.metrics import accuracy_score, precision_score
-from sklearn.metrics import recall_score, f1_score
 from sklearn.linear_model import SGDClassifier
 from sklearn.feature_extraction.text import TfidfVectorizer
-
+from sklearn.metrics import roc_auc_score, roc_curve
+from sklearn.calibration import CalibratedClassifierCV
 from mealpy.swarm_based import AO, HGS, SSA, MRFO
 from nltk.corpus import stopwords
-import statistics
+from sklearn.metrics import roc_curve
+from sklearn.metrics import roc_auc_score
+from matplotlib import pyplot
 
 # bio optimization algorithms
 BIO_ALGS = ['AO', 'HGS', 'SSA', 'MRFO']
-# ALGS = 'RSCV'
-ALGS = BIO_ALGS + ['RSCV', 'DEFAULT']
-
-# log fields
-FIELDS = ['alg', 'data', 'test-size', 'time', 'accuracy',
-          'precision', 'recall', 'f1-score']
-
-# iterations number
-ITERS = 100
+# ALGS = BIO_ALGS + ['RSCV', 'DEFAULT']
+ALGS = BIO_ALGS
 
 # dataset name
-DATASET = 'enron'
+DATASETS = ['enron', 'ling_spam', 'spam_assasin']
 
 # size of test part of dataset
 SIZE = 0.25
-
-
-def format_precent(val):
-    return "{:.2f}%".format(val * 100)
 
 
 def resolve_clf(alg):
@@ -58,136 +47,115 @@ def test_bio_alg(clf, obj_function):
         'minmax': 'max',
         'verbose': True,
     }
-
-    model = clf(problem, epoch=10, pop_size=40)
+    model = clf(problem, epoch=10, pop_size=60)
     model.solve()
-    t = sum(model.history.list_epoch_time)
-
-    return [model.g_best, t]
+    return model.g_best
 
 
 def main():
-    for alg in ALGS:
+    for dataset in DATASETS:
+        # load dataset
+        df = pd.read_csv(f'./input/{dataset}/messages.csv')
+        df = df.fillna(' ')
 
-        alpha = 0.0001
-        epsilon = 0.0001
-        tol = 0.0001
+        X = np.array(df['message'])
+        y = np.array(df['label'])
 
-        with open(r'log.csv', 'a') as f:
-            writer = csv.writer(f)
+        # split dataset
+        X_train, X_test, y_train, y_test = train_test_split(
+            X, y, test_size=SIZE)
 
-            if not os.path.isfile('log.csv') or \
-                    os.path.getsize('log.csv') == 0:
-                writer.writerow(FIELDS)
+        # tokenization
+        cv = TfidfVectorizer(stop_words=stopwords.words('english'))
+        X_train = cv.fit_transform(X_train)
+        X_test = cv.transform(X_test)
 
-            # load dataset
-            df = pd.read_csv(f'./input/{DATASET}/messages.csv')
-            df = df.fillna(' ')
+        for alg in ALGS:
+            # random search
+            if alg == 'RSCV':
+                tuned_parameters = {
+                    'epsilon': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'alpha': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+                    'tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
+                }
 
-            X = np.array(df['message'])
-            y = np.array(df['label'])
+                clf = SGDClassifier()
+                model = RandomizedSearchCV(
+                    clf, tuned_parameters, scoring="roc_auc")
+                model.fit(X_train, y_train)
+                print(alg, model.best_params_)
 
-            sum_acc = []
-            sum_prec = []
-            sum_recall = []
-            sum_f1 = []
-            sum_t = []
-
-            for iter in range(0, ITERS):
-                print("Iter", iter)
-                t = 0
-                y_pred = []
-
-                # split dataset
-                X_train, X_test, y_train, y_test = train_test_split(
-                    X, y, test_size=SIZE)
-
-                # tokenization
-                cv = TfidfVectorizer(stop_words=stopwords.words('english'))
-                X_train = cv.fit_transform(X_train)
-                X_test = cv.transform(X_test)
-
-                # random search
-                if alg == 'RSCV':
-                    tuned_parameters = {
-                        'epsilon': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                        'alpha': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-                        'tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
-                    }
-
-                    t = time.time()
-                    clf = SGDClassifier()
-                    model = RandomizedSearchCV(
-                        clf, tuned_parameters, scoring="f1")
-                    model.fit(X_train, y_train)
-                    y_pred = model.predict(X_test)
-                    t = time.time() - t
-                    print(model.best_params_)
-
-                # bio optimization
-                elif alg in BIO_ALGS:
-                    def obj_function(solution):
-                        alpha, epsilon, tol = solution
-                        clf = SGDClassifier(
-                            alpha=alpha, epsilon=epsilon, tol=tol)
-                        clf.fit(X_train, y_train)
-                        y_pred = clf.predict(X_test)
-
-                        # print best params
-                        # print(
-                        #     f'Alpha={alpha} Epsilon={epsilon} tol={tol} \
-                        #         Acc score: {accuracy_score(y_test, y_pred)}')
-
-                        return f1_score(y_test, y_pred)
-
-                    c = resolve_clf(alg)
-                    best_params_, t = test_bio_alg(c, obj_function)
-                    print(best_params_)
-                    alpha, epsilon, tol = best_params_[0]
-
+            # bio optimization
+            elif alg in BIO_ALGS:
+                def obj_function(solution):
+                    alpha, epsilon, tol = solution
                     clf = SGDClassifier(
                         alpha=alpha, epsilon=epsilon, tol=tol)
                     clf.fit(X_train, y_train)
-                    y_pred = clf.predict(X_test)
+
+                    calibrator = CalibratedClassifierCV(clf, cv='prefit')
+                    model = calibrator.fit(X_train, y_train)
+
+                    y_score = model.predict_proba(X_test)
+                    # print(roc_auc_score(y_test, y_score[:, 1]))
 
                     # print best params
-                    # print(f'Best with: ', f'{best_params_}'.rjust(29, ' '))
+                    # print(
+                    #     f'Alpha={alpha} Epsilon={epsilon} tol={tol} \
+                    #         Acc score: {accuracy_score(y_test, y_pred)}')
 
-                # default parameters
-                else:
-                    clf = SGDClassifier()
-                    t = time.time()
-                    clf.fit(X_train, y_train)
-                    y_pred = clf.predict(X_test)
-                    t = time.time() - t
+                    return roc_auc_score(y_test, y_score[:, 1])
 
-                acc = accuracy_score(y_test, y_pred)
-                prec = precision_score(y_test, y_pred)
-                recall = recall_score(y_test, y_pred)
-                f1 = f1_score(y_test, y_pred)
-                print("ACC", acc)
-                print("F1", f1)
+                c = resolve_clf(alg)
+                best_params_ = test_bio_alg(c, obj_function)
+                alpha, epsilon, tol = best_params_[0]
 
-                sum_acc += [acc]
-                sum_prec += [prec]
-                sum_recall += [recall]
-                sum_f1 += [f1]
-                sum_t += [t]
+                model = SGDClassifier(
+                    alpha=alpha, epsilon=epsilon, tol=tol)
+                model.fit(X_train, y_train)
 
-            # calc average metrics
-            print(sum_acc)
-            avg_acc = statistics.median(sum_acc)
-            avg_prec = statistics.median(sum_prec)
-            avg_recall = statistics.median(sum_recall)
-            avg_f1 = statistics.median(sum_f1)
-            avg_t = statistics.median(sum_t)
+                # print best params
+                print(f'{alg} with {dataset} is best with: ',
+                      f'{best_params_}'.rjust(29, ' '))
 
-            # write result row
-            writer.writerow([alg, DATASET, SIZE, avg_t, format_precent(avg_acc),
-                            format_precent(avg_prec), format_precent(avg_recall), format_precent(avg_f1)])
+            # default parameters
+            else:
+                model = SGDClassifier()
+                model.fit(X_train, y_train)
 
-        f.close()
+            # # generate a no skill prediction (majority class)
+            # ns_probs = [0 for _ in range(len(y_test))]
+
+            # calibrator = CalibratedClassifierCV(model, cv='prefit')
+            # model = calibrator.fit(X_train, y_train)
+
+            # # predict probabilities
+            # lr_probs = model.predict_proba(X_test)
+            # # keep probabilities for the positive outcome only
+            # lr_probs = lr_probs[:, 1]
+            # # calculate scores
+            # ns_auc = roc_auc_score(y_test, ns_probs)
+            # lr_auc = roc_auc_score(y_test, lr_probs)
+            # # summarize scores
+            # print('No Skill: ROC AUC=%.3f' % (ns_auc))
+            # print('Logistic: ROC AUC=%.3f' % (lr_auc))
+            # # calculate roc curves
+            # ns_fpr, ns_tpr, _ = roc_curve(y_test, ns_probs)
+            # lr_fpr, lr_tpr, _ = roc_curve(y_test, lr_probs)
+            # # plot the roc curve for the model
+            # pyplot.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
+            # pyplot.plot(lr_fpr, lr_tpr, marker='.', label='SGD')
+            # # axis labels
+            # pyplot.xlabel('False Positive Rate')
+            # pyplot.ylabel('True Positive Rate')
+            # # show the legend
+            # pyplot.legend()
+            # # show the plot
+            # pyplot.show()
 
 
 if __name__ == '__main__':
     main()
+
+
+# HGS 0.0001, 0.0001, 0.0001

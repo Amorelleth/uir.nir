@@ -1,0 +1,155 @@
+# Train: ling_spam, test: spam_assasin
+# Params 0.0001 0.1 0.001
+# Alg: DEFAULT
+# Train Accuracy mean: 0.9968750000000002
+# Accuracy: 0.8827268741779921
+# Confusion matrix [[1930  351]
+#  [ 184 2097]]
+# ROC: 0.8827268741779921
+
+# Params 0.001 1 1
+# Alg: RSCV
+# Train Accuracy mean: 0.9979166666666668
+# Accuracy: 0.8671635247698378
+# Confusion matrix [[1803  478]
+#  [ 128 2153]]
+# ROC: 0.8671635247698378
+
+# Train: spam_assasin, test: ling_spam
+# Params 0.0001 0.1 0.001
+# Alg: DEFAULT
+# Train Accuracy mean: 0.9971496026718876
+# Accuracy: 0.7307692307692307
+# Confusion matrix [[225 256]
+#  [  3 478]]
+# ROC: 0.7307692307692308
+
+# Train: spam_assasin, test: ling_spam
+# Params 0.0001 1 10
+# Alg: RSCV
+# Train Accuracy mean: 0.9967110061806596
+# Accuracy: 0.737006237006237
+# Confusion matrix [[231 250]
+#  [  3 478]]
+# ROC: 0.7370062370062371
+
+# Train: spam_assasin, test: ling_spam
+Train: ling_spam, test: spam_assasin
+Params 0.001 1 1
+Alg: RSCV
+Train Accuracy mean: 0.9979166666666668
+Accuracy: 0.8671635247698378
+Confusion matrix [[1803  478]
+ [ 128 2153]]
+ROC: 0.8671635247698378
+
+Params 0.0001 0.1 0.001
+Alg: DEFAULT
+Train Accuracy mean: 0.9968750000000002
+Accuracy: 0.8827268741779921
+Confusion matrix [[1930  351]
+ [ 184 2097]]
+ROC: 0.8827268741779921
+
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.26726 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.29680 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.30512 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.29310 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.30060 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.29529 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.28044 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.27448 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.31219 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.29341 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.41167 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.25232 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.31213 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.26186 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.25582 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.27944 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.20338 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.20155 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.25025 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.24278 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.38771 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.34384 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.31317 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.25389 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.41782 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.29818 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.28844 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.34093 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.36846 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.25306 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.28879 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.25421 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.23710 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.24331 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.23499 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.23165 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.21957 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.23273 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.22907 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.25572 seconds
+> Epoch: 1, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.25556 seconds
+> Epoch: 2, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23102 seconds
+> Epoch: 3, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.24174 seconds
+> Epoch: 4, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23968 seconds
+> Epoch: 5, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23731 seconds
+> Epoch: 6, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.22969 seconds
+> Epoch: 7, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23982 seconds
+> Epoch: 8, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23172 seconds
+> Epoch: 9, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.22900 seconds
+> Epoch: 10, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.23330 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.27798 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.24416 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.23847 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.24177 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.21721 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.23053 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.23916 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.21952 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.22077 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.22561 seconds
+> Epoch: 1, Current best: 0.9895833333333334, Global best: 0.9895833333333334, Runtime: 0.29975 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.25817 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.23232 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.22722 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.23185 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.22913 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.23335 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.23585 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.23591 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.23400 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.27838 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.24988 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.24081 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.23755 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.22886 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.22625 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.23388 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.23419 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.21901 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.22209 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.33832 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.37367 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.38190 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.39926 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.51875 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.44008 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.69964 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.59921 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.44424 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.41512 seconds
+> Epoch: 1, Current best: 1.0, Global best: 1.0, Runtime: 0.30332 seconds
+> Epoch: 2, Current best: 1.0, Global best: 1.0, Runtime: 0.29802 seconds
+> Epoch: 3, Current best: 1.0, Global best: 1.0, Runtime: 0.25297 seconds
+> Epoch: 4, Current best: 1.0, Global best: 1.0, Runtime: 0.24902 seconds
+> Epoch: 5, Current best: 1.0, Global best: 1.0, Runtime: 0.23380 seconds
+> Epoch: 6, Current best: 1.0, Global best: 1.0, Runtime: 0.24073 seconds
+> Epoch: 7, Current best: 1.0, Global best: 1.0, Runtime: 0.22863 seconds
+> Epoch: 8, Current best: 1.0, Global best: 1.0, Runtime: 0.22662 seconds
+> Epoch: 9, Current best: 1.0, Global best: 1.0, Runtime: 0.26667 seconds
+> Epoch: 10, Current best: 1.0, Global best: 1.0, Runtime: 0.26455 seconds
+Params 0.00021367572166334242 311.3130984522456 490.0568528874348
+Alg: MRFO
