@@ -1,0 +1,232 @@
+\begin{thebibliography}{10}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+\ProvideTextCommandDefault{\cyrdash}{\iflanguage{russian}{\hbox
+  to.8em{--\hss--}}{\textemdash}}
+\providecommand*{\BibDash}{\ifdim\lastskip>0pt\unskip\nobreak\hskip.2em plus
+  0.1em\fi
+\cyrdash\hskip.2em plus 0.1em\ignorespaces}
+\renewcommand{\newblock}{\ignorespaces}
+
+\bibitem{IEEE}
+\selectlanguageifdefined{english}
+Detecting Spam Email With Machine Learning Optimized With Bio-Inspired
+  Metaheuristic Algorithms~/ Gibson~Simran, Issac~Biju, Zhang~Li, and
+  Jacob~Seibu~Mary~// \BibEmph{{IEEE} Access}. \BibDash
+\newblock 2020. \BibDash
+\newblock Vol.~8. \BibDash
+\newblock P.~187914--187932.
+
+\bibitem{stat}
+\selectlanguageifdefined{english}
+Спам и фишинг в 2021 году [Электронный
+  ресурс]~// Securelist.ru: Спам и фишинг в 2021 году |
+  Securelist.
+  URL:~\url{https://securelist.ru/spam-and-phishing-in-2021/104407/} (дата
+  обращения 17.04.2022).
+
+\bibitem{BioInspiredTaxonomy}
+\selectlanguageifdefined{english}
+A comprehensive study of spam detection in e-mails using bio-inspired
+  optimization techniques~/ Batra~Jai, Jain~Rupali, Tikkiwal~Vinay~A., and
+  Chakraborty~Amrita~// \BibEmph{International Journal of Information
+  Management Data Insights}. \BibDash
+\newblock 2021. \BibDash Apr. \BibDash
+\newblock P.~100006.
+
+\bibitem{filters}
+\selectlanguageifdefined{english}
+Bhowmick~Alexy, Hazarika~Shyamanta~M. E-Mail Spam Filtering: A Review of
+  Techniques and Trends~// Lecture Notes in Electrical Engineering. \BibDash
+\newblock Springer Singapore, 2017. \BibDash
+\newblock P.~583--590.
+
+\bibitem{IFIP}
+\selectlanguageifdefined{english}
+Garcia~Flavio~D., Hoepman~Jaap-Henk, Nieuwenhuizen~Jeroen. Spam Filter
+  Analysis~// Security and Protection in Information Processing Systems.
+  \BibDash
+\newblock Springer {US}, 2004. \BibDash
+\newblock P.~395--410.
+
+\bibitem{Bayes}
+\selectlanguageifdefined{english}
+A Bayesian Approach to Filtering Junk E-Mail~/ Heckerman~David, Horvitz~Eric,
+  Sahami~Mehran, and Dumais~Susan~// AAAI Workshop on Learning for Text
+  Categorization. \BibDash
+\newblock 1998. \BibDash July.
+
+\bibitem{scikitMNB}
+\selectlanguageifdefined{english}
+Multinomial Naive Bayes [Электронный ресурс]~//
+  Scikit-learn.org: machine learning in Python — scikit-learn 1.0.1
+  documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/naive_bayes.html?highlight=mnb}
+  (дата обращения 15.05.2021).
+
+\bibitem{SVM}
+\selectlanguageifdefined{english}
+Воронцов~К. Лекции По Методу Опорных
+  Векторов. \BibDash
+\newblock 2007.
+
+\bibitem{scikitSGD}
+\selectlanguageifdefined{english}
+Sklearn.linear\_model.SGDClassifier [Электронный ресурс]~//
+  Scikit-learn.org: machine learning in Python — scikit-learn 1.0.1
+  documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDClassifier.html}
+  (дата обращения 15.05.2021).
+
+\bibitem{SVC}
+\selectlanguageifdefined{english}
+Sklearn.svm.SVC [Электронный ресурс]~// Scikit-learn.org:
+  machine learning in Python — scikit-learn 1.0.1 documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html}
+  (дата обращения 21.05.2021).
+
+\bibitem{Yang2009}
+\selectlanguageifdefined{english}
+Yang~Xin-She. Firefly Algorithms for Multimodal Optimization~// Stochastic
+  Algorithms: Foundations and Applications. \BibDash
+\newblock Springer Berlin Heidelberg, 2009. \BibDash
+\newblock P.~169--178.
+
+\bibitem{Boyd2004}
+\selectlanguageifdefined{english}
+Boyd~Stephen, Vandenberghe~Lieven. Convex Optimization. \BibDash
+\newblock Cambridge University Press, 2004. \BibDash Mar.
+
+\bibitem{scikitMetrics}
+\selectlanguageifdefined{english}
+Metrics and scoring: quantifying the quality of predictions
+  [Электронный ресурс]~// Scikit-learn.org: machine learning
+  in Python — scikit-learn 1.0.1 documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/model_evaluation.html}
+  (дата обращения 21.05.2021).
+
+\bibitem{scikitKFold}
+\selectlanguageifdefined{english}
+Cross Validation [Электронный ресурс]~// Scikit-learn.org:
+  machine learning in Python — scikit-learn 1.0.1 documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/cross_validation.html}
+  (дата обращения 02.04.2022).
+
+\bibitem{stratifiedKFold}
+\selectlanguageifdefined{english}
+Stratified KFold Validation [Электронный ресурс]~//
+  Scikit-learn.org: machine learning in Python — scikit-learn 1.0.1
+  documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.StratifiedKFold.html}
+  (дата обращения 02.04.2022).
+
+\bibitem{AO}
+\selectlanguageifdefined{english}
+Aquila Optimizer: A novel meta-heuristic optimization algorithm~/
+  Abualigah~Laith, Yousri~Dalia, Elaziz~Mohamed~Abd, Ewees~Ahmed~A.,
+  Al-qaness~Mohammed~A.A., and Gandomi~Amir~H.~//
+  \href{https://doi.org/10.1016/j.cie.2021.107250}{\BibEmph{Computers {\&}
+  Industrial Engineering}}. \BibDash
+\newblock 2021. \BibDash July. \BibDash
+\newblock Vol. 157. \BibDash
+\newblock P.~107250.
+
+\bibitem{HGS}
+\selectlanguageifdefined{english}
+Hunger games search: Visions, conception, implementation, deep analysis,
+  perspectives, and towards performance shifts~/ Yang~Yutao, Chen~Huiling,
+  Heidari~Ali~Asghar, and Gandomi~Amir~H~//
+  \href{https://doi.org/10.1016/j.eswa.2021.114864}{\BibEmph{Expert Systems
+  with Applications}}. \BibDash
+\newblock 2021. \BibDash Sep. \BibDash
+\newblock Vol. 177. \BibDash
+\newblock P.~114864.
+
+\bibitem{SSA}
+\selectlanguageifdefined{english}
+Xue~Jiankai, Shen~Bo. A novel swarm intelligence optimization approach: sparrow
+  search algorithm~//
+  \href{https://doi.org/10.1080/21642583.2019.1708830}{\BibEmph{Systems Science
+  {\&} Control Engineering}}. \BibDash
+\newblock 2020. \BibDash Jan. \BibDash
+\newblock Vol.~8, no.~1. \BibDash
+\newblock P.~22--34.
+
+\bibitem{MRFO}
+\selectlanguageifdefined{english}
+Zhao~Weiguo, Zhang~Zhenxing, Wang~Liying. Manta ray foraging optimization: An
+  effective bio-inspired optimizer for engineering applications~//
+  \href{https://doi.org/10.1016/j.engappai.2019.103300}{\BibEmph{Engineering
+  Applications of Artificial Intelligence}}. \BibDash
+\newblock 2020. \BibDash Jan. \BibDash
+\newblock Vol.~87. \BibDash
+\newblock P.~103300.
+
+\bibitem{LingSpam}
+\selectlanguageifdefined{english}
+Spam filtering datasets [Электронный ресурс]~// Aclweb.org:
+  Spam: filtering datasets - ACL Wiki.
+  URL:~\url{https://aclweb.org/aclwiki/Spam_filtering_datasets} (дата
+  обращения 07.12.2021).
+
+\bibitem{SpamAssasin}
+\selectlanguageifdefined{english}
+Index of /old/publiccorpus [Электронный ресурс]~//
+  Spamassassin.apache.org: Index of /old/publiccorpus.
+  URL:~\url{https://spamassassin.apache.org/old/publiccorpus} (дата
+  обращения 07.12.2021).
+
+\bibitem{Enron}
+\selectlanguageifdefined{english}
+The Enron-Spam datasets [Электронный ресурс]~//
+  Nlp.cs.aueb.gr: The Enron-Spam datasets.
+  URL:~\url{http://nlp.cs.aueb.gr/software_and_datasets/Enron-Spam/index.html}
+  (дата обращения 07.12.2021).
+
+\bibitem{Manning}
+\selectlanguageifdefined{english}
+Manning~Christopher~D., Raghavan~Prabhakar, Schutze~Hinrich.
+  \href{https://doi.org/10.1017/cbo9780511809071.007}{Scoring, term weighting,
+  and the vector space model}~// Introduction to Information Retrieval.
+  \BibDash
+\newblock Cambridge University Press. \BibDash
+\newblock P.~100--123.
+
+\bibitem{scikitTfIdf}
+\selectlanguageifdefined{english}
+Sklearn.svm.SVC [Электронный ресурс]~// Scikit-learn.org:
+  machine learning in Python — scikit-learn 1.0.1 documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html}
+  (дата обращения 07.12.2021).
+
+\bibitem{thieu_nguyen_2020_3711949}
+\selectlanguageifdefined{english}
+Thieu~Nguyen~Van. A collection of the state-of-the-art MEta-heuristics
+  ALgorithms in PYthon: Mealpy. \BibDash
+\newblock 2020. \BibDash
+\newblock Access mode: \BibUrl{https://doi.org/10.5281/zenodo.3711948}.
+
+\bibitem{scikitBook}
+\selectlanguageifdefined{english}
+Перевод:~Géron~Aurélien. Прикладное машинное
+  обучение с помощью Scikit-Learn и TensorFlow.
+  Концепции, инструменты и техники для
+  создания интеллектуальных систем. \BibDash
+\newblock Вильямс, 2018. \BibDash
+\newblock Vol.~688.
+
+\bibitem{scikitTuning}
+\selectlanguageifdefined{english}
+Tuning the hyper-parameters of an estimator [Электронный
+  ресурс]~// Scikit-learn.org: machine learning in Python —
+  scikit-learn 1.0.1 documentation.
+  URL:~\url{https://scikit-learn.org/stable/modules/grid_search.html} (дата
+  обращения 21.05.2021).
+
+\end{thebibliography}

@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Г00-000_СтудентСС_ПЗ.aux
+The style file: ugost2008.bst
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: library/library.bib
+Warning--entry type for "thieu_nguyen_2020_3711949" isn't style-file defined
+--line 189 of file library/library.bib
+Warning--string name "march" is undefined
+--line 192 of file library/library.bib
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--unknown month in Bayes
+Warning--empty journal in SVM
+Warning--empty year/date in Manning
+You've used 27 entries,
+            5635 wiz_defined-function locations,
+            1731 strings with 22021 characters,
+and the built_in function-call counts, 8348 in all, are:
+= -- 987
+> -- 178
+< -- 21
++ -- 68
+- -- 41
+* -- 437
+:= -- 777
+add.period$ -- 69
+call.type$ -- 27
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 30
+duplicate$ -- 497
+empty$ -- 1097
+format.name$ -- 41
+if$ -- 2345
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 0
+newline$ -- 155
+num.names$ -- 44
+pop$ -- 201
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 387
+stack$ -- 0
+substring$ -- 256
+swap$ -- 298
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 37
+width$ -- 29
+write$ -- 289
+(There were 5 warnings)

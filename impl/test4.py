@@ -1,3 +1,5 @@
+from sklearn.naive_bayes import MultinomialNB
+from audioop import cross
 from contextlib import redirect_stdout
 from sklearn.model_selection import StratifiedKFold
 from mealpy.swarm_based import AO, HGS, SSA, MRFO, HHO
@@ -7,38 +9,35 @@ from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import SGDClassifier
 from sklearn.metrics import confusion_matrix, roc_auc_score, roc_curve, precision_recall_curve
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, auc
+from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_score, recall_score, f1_score, auc
 from sklearn.model_selection import train_test_split, cross_val_score, StratifiedKFold, RandomizedSearchCV
 import numpy as np
 import pandas as pd
 from numpy import mean
 from numpy import std
 
-enron = pd.read_csv(f'./input/enron/messages.csv').fillna(' ')
-X_enron = np.array(enron['message'])
-y_enron = np.array(enron['label'])
+DEFAULT_PARAMS = [0.0001, 0.1, 1e-3]
 
-ling_spam = pd.read_csv(f'./input/ling_spam_copy/messages.csv').fillna(' ')
-X_ling_spam = np.array(ling_spam['message'])
-y_ling_spam = np.array(ling_spam['label'])
+EN = pd.read_csv(f'./input/enron/messages.csv').fillna(' ')
+X_EN = np.array(EN['message'])
+y_EN = np.array(EN['label'])
 
-spam_assasin = pd.read_csv(
-    f'./input/spam_assasin_copy/messages.csv').fillna(' ')
-X_spam_assasin = np.array(spam_assasin['message'])
-y_spam_assasin = np.array(spam_assasin['label'])
+LS = pd.read_csv(f'./input/ling_spam/messages.csv').fillna(' ')
+X_LS = np.array(LS['message'])
+y_LS = np.array(LS['label'])
 
-BIO_ALGS = ['MRFO', 'HGS', 'AO', 'HHO']
-ALGS = ["RSCV", "DEFAULT"] + BIO_ALGS
-# ALGS = BIO_ALGS
+SA = pd.read_csv(f'./input/spam_assasin/messages.csv').fillna(' ')
+X_SA = np.array(SA['message'])
+y_SA = np.array(SA['label'])
 
 
 def resolve_dataset(name):
-    if (name == 'enron'):
-        return [X_enron.copy(), y_enron.copy()]
-    elif (name == 'ling_spam'):
-        return [X_ling_spam.copy(), y_ling_spam.copy()]
-    elif (name == 'spam_assasin'):
-        return [X_spam_assasin.copy(), y_spam_assasin.copy()]
+    if (name == 'EN'):
+        return [X_EN.copy(), y_EN.copy()]
+    elif (name == 'LS'):
+        return [X_LS.copy(), y_LS.copy()]
+    elif (name == 'SA'):
+        return [X_SA.copy(), y_SA.copy()]
     else:
         return
 
@@ -52,14 +51,31 @@ def resolve_alg(alg):
         return SSA.OriginalSSA
     elif alg == 'MRFO':
         return MRFO.BaseMRFO
-    elif alg == 'HHO':
-        return HHO.BaseHHO
 
 
-def bio(alg, X, y):
+def get_best(alg, X, y):
+    if (alg == 'RSCV'):
+        distributions = {
+            'clf__epsilon': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+            'clf__alpha': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+            'clf__tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
+        }
+        skf = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
+        clf = Pipeline([
+            ('tfidf_vectorizer', TfidfVectorizer(
+                stop_words=stopwords.words('english'))),
+            ('clf', SGDClassifier(random_state=0, class_weight='balanced', n_jobs=-1))])
+
+        clf_random = RandomizedSearchCV(
+            clf, distributions, scoring='accuracy', cv=skf, random_state=0)
+        clf_random.fit(X, y)
+        best = clf_random.best_params_
+
+        return [best['clf__alpha'], best['clf__epsilon'], best['clf__tol']]
+
     alg = resolve_alg(alg)
     cv = TfidfVectorizer(stop_words=stopwords.words('english'))
-    skf = StratifiedKFold(n_splits=10, random_state=None, shuffle=False)
+    skf = StratifiedKFold(n_splits=10, random_state=1, shuffle=True)
 
     alpha, epsilon, tol = [], [], []
 
@@ -72,14 +88,14 @@ def bio(alg, X, y):
 
         def obj_function(solution):
             alpha, epsilon, tol = solution
-            clf = SGDClassifier(random_state=0, alpha=alpha,
+            clf = SGDClassifier(random_state=0, class_weight='balanced', alpha=alpha,
                                 epsilon=epsilon, tol=tol, n_jobs=-1)
             clf.fit(X_train, y_train)
             y_pred = clf.predict(X_test)
             return accuracy_score(y_test, y_pred)
 
         problem = {
-            'obj_func': obj_function,
+            'fit_func': obj_function,
             'lb': [0.0001, 0.0001, 0.0001],
             'ub': [1000, 1000, 1000],
             'minmax': 'max',
@@ -96,62 +112,147 @@ def bio(alg, X, y):
     return [mean(alpha), mean(epsilon), mean(tol)]
 
 
-def get_best(alg, X, y):
-    if (alg == 'RSCV'):
-        distributions = {
-            'clf__epsilon': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-            'clf__alpha': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000],
-            'clf__tol': [0.0001, 0.001, 0.01, 0.1, 1, 10, 100, 1000]
-        }
-        clf = Pipeline([
-            ('tfidf_vectorizer', TfidfVectorizer(
-                stop_words=stopwords.words('english'))),
-            ('clf', SGDClassifier(random_state=0, n_jobs=-1))])
+# pyplot.rcParams['figure.figsize'] = [80, 40]
+# pyplot.rcParams.update({'font.size': 60})
 
-        clf_random = RandomizedSearchCV(
-            clf, distributions, scoring='accuracy', cv=10, random_state=0)
-        clf_random.fit(X, y)
-        best = clf_random.best_params_
-
-        return [best['clf__alpha'], best['clf__epsilon'], best['clf__tol']]
-
-    elif alg == 'DEFAULT':
-        return [0.0001, 0.1, 1e-3]
-
-    return bio(alg, X, y)
+# test clfs trained with <train> dataset on <test> dataset
 
 
-def create_clf(params):
+def test(clfs, train, test):
+    print(f'Test models trained with {train} on {test}')
+
+    for alg in clfs:
+        X, y = resolve_dataset(test)
+        clf = clfs[alg]
+
+        y_score = clf.decision_function(X)
+        y_pred = clf.predict(X)
+
+        print(alg)
+        print('Accuracy %.5f: ' % accuracy_score(y, y_pred))
+        print('ROC: %.5f' % roc_auc_score(y, y_pred))
+        print('F1: %.5f\n' % f1_score(y, y_pred))
+
+        y_fpr, y_tpr, _ = roc_curve(y, y_score)
+
+        # if alg == 'AO':
+        #     pyplot.plot(y_fpr, y_tpr, marker='x', label=alg)
+        # elif alg == 'SSA':
+        #     pyplot.plot(y_fpr, y_tpr, marker='+', label=alg)
+        # else:
+        pyplot.plot(y_fpr, y_tpr, marker=',', label=alg)
+
+    ns_probs = [0 for _ in range(len(y))]
+    ns_fpr, ns_tpr, _ = roc_curve(y, ns_probs)
+
+    pyplot.plot(ns_fpr, ns_tpr, linestyle='--', label='Без навыков')
+    pyplot.xlabel('Ошибка первого рода')
+    pyplot.ylabel('Чувствительность')
+    pyplot.legend()
+    pyplot.show()
+
+
+def create_clf(params, class_weight=None):
     alpha, epsilon, tol = params
     return Pipeline([
         ('tfidf_vectorizer', TfidfVectorizer(
             stop_words=stopwords.words('english'))),
-        ('clf', SGDClassifier(random_state=0, alpha=alpha,
-         epsilon=epsilon, tol=tol, n_jobs=-1))
+        ('clf', SGDClassifier(random_state=0,
+         alpha=alpha, epsilon=epsilon, tol=tol, class_weight=class_weight, n_jobs=-1))
     ])
 
 
-ling_spam_RSCV_clf = get_best('RSCV', X_ling_spam, y_ling_spam)
-print(ling_spam_RSCV_clf)
-# print(accuracy_score(ling_spam_RSCV_clf, X_spam_assasin, y_spam_assasin, cv=10))
+X, y = X_LS, y_LS
 
-print(
-    f'Train cross-val accuracy ling_spam_RSCV {mean(cross_val_score(ling_spam_RSCV, X_spam_assasin, y_spam_assasin, cv=10))}')
-#     clf = Pipeline([
-#         ('tfidf_vectorizer', TfidfVectorizer(
-#             stop_words=stopwords.words('english'))),
-#         ('clf', SGDClassifier(random_state=0, alpha=alpha, epsilon=epsilon, tol=tol, n_jobs=-1))])
+best_LS_RSCV = [0.001, 1, 1]
+best_LS_MRFO = [0.00011623717756157859, 484.27076763414436, 216.5086989934]
+best_LS_HGS = [0.0022917872068965736, 19.823049434350512, 90.57441814602444]
+best_LS_AO = [0.19002423039394772, 41.07346210476601, 57.552068978376624]
+best_LS_SSA = [0.032970495018666765, 183.32506925145373, 117.76141405995111]
 
-#     accuracy = cross_val_score(clf, X, y, cv=10)
+# LS_clfs = {
+#     "RSCV": create_clf(best_LS_RSCV),
+#     "DEFAULT": create_clf(DEFAULT_PARAMS),
+#     "MRFO": create_clf(best_LS_MRFO),
+#     "HGS": create_clf(best_LS_HGS),
+#     "AO": create_clf(best_LS_AO),
+#     "SSA": create_clf(best_LS_SSA)
+# }
 
-#     clf.fit(X, y)
-#     y_score = clf.decision_function(X2)
-#     y_pred = clf.predict(X2)
+# for alg in LS_clfs:
+#     LS_clfs[alg].fit(X_LS, y_LS)
 
-#     print('Params', alpha, epsilon, tol)
-#     print(f'Alg: {alg}')
-#     print(f'Train Accuracy mean: {mean(accuracy)}')
-#     print(f'Accuracy: {accuracy_score(y2, y_pred)}')
-#     print(f'Confusion matrix {confusion_matrix(y2, y_pred)}')
-#     print(f'ROC: {roc_auc_score(y2, y_pred)}')
-#     print()
+# test(LS_clfs, "LS", "SA")
+# test(LS_clfs, "LS", "EN")
+
+X, y = X_LS, y_LS
+
+LS_clfs = {
+    "RSCV": create_clf(best_LS_RSCV),
+    "DEFAULT": create_clf(DEFAULT_PARAMS),
+    "MRFO": create_clf(best_LS_MRFO),
+    "HGS": create_clf(best_LS_HGS),
+    "AO": create_clf(best_LS_AO),
+    "SSA": create_clf(best_LS_SSA)
+}
+
+for alg in LS_clfs:
+    print(alg, mean(cross_val_score(
+        LS_clfs[alg], X, y, cv=10, scoring='accuracy')))
+
+
+# X, y = X_SA, y_SA
+
+# best_SA_RSCV = [0.0001, 1, 10]
+# best_SA_MRFO = [0.00010870235001272333, 451.9050393554245, 181.09353850833924]
+# best_SA_HGS = [0.00011032170757958722,
+#                0.00011472906393677556, 2.7412975859147672]
+# best_SA_AO = [0.0001, 0.1882828225532926, 0.06256962757736609]
+# best_SA_SSA = [0.00010541550010794703, 171.5336819945209, 170.657590549754]
+
+# SA_clfs = {
+#     "RSCV": create_clf(best_SA_RSCV),
+#     "DEFAULT": create_clf(DEFAULT_PARAMS),
+#     "MRFO": create_clf(best_SA_MRFO),
+#     "HGS": create_clf(best_SA_HGS),
+#     "AO": create_clf(best_SA_AO),
+#     "SSA": create_clf(best_SA_SSA)
+# }
+
+
+# for alg in SA_clfs:
+#     print(alg, mean(cross_val_score(
+#         SA_clfs[alg], X, y, cv=10, scoring='accuracy')))
+
+# for alg in SA_clfs:
+#     SA_clfs[alg].fit(X_SA, y_SA)
+
+# test(SA_clfs, "SA", "LS")
+
+
+# --------------------------------------------
+#
+# best_EN_RSCV = [0.0001, 1, 10]
+# best_EN_MRFO = [0.00010110580912339215, 339.20447492054046, 377.83845464774805]
+# best_EN_HGS = [0.00010085619945834547, 154.9162953216401, 116.10455211284992]
+# best_EN_AO = [0.0001, 96.33289509195406, 111.70127122768649]
+# best_EN_SSA = [0.0001, 109.01548465909111, 97.49608032123167]
+
+# X, y = X_EN, y_EN
+
+# EN_clfs = {
+#     "RSCV": create_clf(best_EN_RSCV),
+#     "MRFO": create_clf(best_EN_MRFO),
+#     "HGS": create_clf(best_EN_HGS),
+#     "AO": create_clf(best_EN_AO),
+#     "SSA": create_clf(best_EN_SSA),
+#     "DEFAULT": create_clf(DEFAULT_PARAMS),
+# }
+
+# for alg in EN_clfs:
+#     print(alg, mean(cross_val_score(EN_clfs[alg], X, y, scoring='accuracy')))
+
+# for alg in EN_clfs:
+#     EN_clfs[alg].fit(X_EN, y_EN)
+
+# test(EN_clfs, "EN", "SA")

@@ -31,7 +31,7 @@ ns_fpr, ns_tpr, _ = roc_curve(testy, ns_probs)
 lr_fpr, lr_tpr, _ = roc_curve(testy, lr_probs)
 # plot the roc curve for the model
 pyplot.plot(ns_fpr, ns_tpr, linestyle='--', label='No Skill')
-pyplot.plot(lr_fpr, lr_tpr, marker='.', label='Logistic')
+pyplot.plot(lr_fpr, lr_tpr, marker='.', label='SGD')
 # axis labels
 pyplot.xlabel('False Positive Rate')
 pyplot.ylabel('True Positive Rate')

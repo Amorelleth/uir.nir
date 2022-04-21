@@ -197,7 +197,3 @@ test('spam_assasin', 'ling_spam')
 # pyplot.ylabel('Чувствительность')
 # pyplot.legend()
 # pyplot.show()
-
-
-for clf in [ling_spam_RSCV, ling_spam_DEFAULT, ling_spam_MRFO, ling_spam_HGS, ling_spam_AO, ling_spam_HHO]:
-    print()
