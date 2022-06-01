@@ -1,66 +1,66 @@
 \selectlanguage *[numerals=cyrillic]{russian}
-\contentsline {chapter}{Определения, обозначения, сокращения}{5}{chapter*.3}%
-\contentsline {chapter}{Введение}{6}{chapter*.5}%
-\contentsline {section}{\numberline {1}Классификация методов фильтрации спама в электронной почте}{8}{section.0.1}%
-\contentsline {subsection}{\numberline {1.1}На основе репутации (Reputation-based)}{8}{subsection.0.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.1}Анализ источника сообщения}{8}{subsubsection.0.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Анализ социальных сетей}{9}{subsubsection.0.1.1.2}%
-\contentsline {subsubsection}{\numberline {1.1.3}Анализ трафика}{9}{subsubsection.0.1.1.3}%
-\contentsline {subsubsection}{\numberline {1.1.4}Анализ протокола}{9}{subsubsection.0.1.1.4}%
-\contentsline {subsection}{\numberline {1.2}На основе текстового содержимого}{10}{subsection.0.1.2}%
-\contentsline {subsubsection}{\numberline {1.2.1}Эвристические фильтры}{10}{subsubsection.0.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Fingerprint-based фильтры}{11}{subsubsection.0.1.2.2}%
-\contentsline {subsection}{\numberline {1.3}Фильтрация на основе машинного обучения}{12}{subsection.0.1.3}%
-\contentsline {section}{\numberline {2}Фильтрация спама на основе машинного обучения}{13}{section.0.2}%
-\contentsline {subsection}{\numberline {2.1}Фильтрация спама как задача машинного обучения}{13}{subsection.0.2.1}%
-\contentsline {subsection}{\numberline {2.2}Модели машинного обучения, используемые для фильтрации спама}{13}{subsection.0.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.1}Наивный Байесовский классификатор (NBC)}{14}{subsubsection.0.2.2.1}%
-\contentsline {subsubsection}{\numberline {2.2.2}Мультиномиальный наивный Байесовский \\ классификатор (MNB)}{15}{subsubsection.0.2.2.2}%
-\contentsline {subsubsection}{\numberline {2.2.3}Метод опорных векторов (SVM)}{16}{subsubsection.0.2.2.3}%
-\contentsline {subsubsection}{\numberline {2.2.4}Стохастический градиентный спуск}{17}{subsubsection.0.2.2.4}%
-\contentsline {subsection}{\numberline {2.3}Выбор алгоритма машинного обучения для эксперимента}{18}{subsection.0.2.3}%
-\contentsline {section}{\numberline {3}Алгоритмы оптимизации}{19}{section.0.3}%
-\contentsline {subsection}{\numberline {3.1}Задача оптимизации}{19}{subsection.0.3.1}%
-\contentsline {subsection}{\numberline {3.2}Классификация алгоритмов оптимизации}{20}{subsection.0.3.2}%
-\contentsline {subsection}{\numberline {3.3}Оптимизация гиперпараметров в машинном обучении}{21}{subsection.0.3.3}%
-\contentsline {subsection}{\numberline {3.4}Природные алгоритмы оптимизации}{22}{subsection.0.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Эволюционные алгоритмы}{22}{subsubsection.0.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Алгоритмы на основе роевого интеллекта}{22}{subsubsection.0.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Алгоритмы на основе физики / химии}{24}{subsubsection.0.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Алгоритмы, основанные на социальном поведении человека}{24}{subsubsection.0.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}Алгоритмы на основе растений}{25}{subsubsection.0.3.4.5}%
-\contentsline {subsubsection}{\numberline {3.4.6}Алгоритмы со смешанными источниками вдохновения}{25}{subsubsection.0.3.4.6}%
-\contentsline {section}{\numberline {4}Оценка производительности моделей машинного обучения}{26}{section.0.4}%
-\contentsline {subsection}{\numberline {4.1}Матрица ошибок}{26}{subsection.0.4.1}%
-\contentsline {subsection}{\numberline {4.2}Accuracy}{26}{subsection.0.4.2}%
-\contentsline {subsection}{\numberline {4.3}Recall}{26}{subsection.0.4.3}%
-\contentsline {subsection}{\numberline {4.4}Precision}{27}{subsection.0.4.4}%
-\contentsline {subsection}{\numberline {4.5}F1-score}{27}{subsection.0.4.5}%
-\contentsline {subsection}{\numberline {4.6}ROC-кривая}{27}{subsection.0.4.6}%
-\contentsline {subsection}{\numberline {4.7}Перекрестная проверка}{28}{subsection.0.4.7}%
-\contentsline {section}{\numberline {5}Подготовка к проведению эксперимента}{29}{section.0.5}%
-\contentsline {subsection}{\numberline {5.1}Планирование эксперимента}{29}{subsection.0.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}Перекрестная проверка}{30}{subsubsection.0.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}Подбор параметров}{30}{subsubsection.0.5.1.2}%
-\contentsline {subsection}{\numberline {5.2}Архитектура системы для проведения эксперимента}{30}{subsection.0.5.2}%
-\contentsline {section}{\numberline {6}Определение набора алгоритмов для проведения эксперимента}{32}{section.0.6}%
-\contentsline {subsection}{\numberline {6.1}Оптимизатор орла (Aquila optimizer)}{32}{subsection.0.6.1}%
-\contentsline {subsection}{\numberline {6.2}Поиск голодных игр (Hunger Games Search)}{32}{subsection.0.6.2}%
-\contentsline {subsection}{\numberline {6.3}Алгоритм поиска воробьев (Sparrow Search Algorithm)}{33}{subsection.0.6.3}%
-\contentsline {subsection}{\numberline {6.4}Алгоритм оптимизации кормодобывания скатов манта (Manta Ray Foraging Optimization)}{33}{subsection.0.6.4}%
-\contentsline {section}{\numberline {7}Определение инструментов и данных}{34}{section.0.7}%
-\contentsline {subsection}{\numberline {7.1}Оборудование и программное обеспечение}{34}{subsection.0.7.1}%
-\contentsline {subsection}{\numberline {7.2}Определение наборов данных}{34}{subsection.0.7.2}%
-\contentsline {subsection}{\numberline {7.3}Предварительная обработка данных}{36}{subsection.0.7.3}%
-\contentsline {subsubsection}{\numberline {7.3.1}Приведение к общему виду}{36}{subsubsection.0.7.3.1}%
-\contentsline {subsubsection}{\numberline {7.3.2}Символьная обработка}{36}{subsubsection.0.7.3.2}%
-\contentsline {subsubsection}{\numberline {7.3.3}Токенизация}{37}{subsubsection.0.7.3.3}%
-\contentsline {section}{\numberline {8}Программная реализация эксперимента}{39}{section.0.8}%
-\contentsline {subsection}{\numberline {8.1}Настройка параметров модели}{39}{subsection.0.8.1}%
-\contentsline {subsection}{\numberline {8.2}Применение природных алгоритмов оптимизации}{40}{subsection.0.8.2}%
-\contentsline {section}{\numberline {9}Результаты}{41}{section.0.9}%
-\contentsline {chapter}{Заключение}{47}{chapter*.19}%
-\contentsline {chapter}{Список использованных источников}{49}{section*.20}%
+\contentsline {chapter}{Определения, обозначения, сокращения}{8}{chapter*.3}%
+\contentsline {chapter}{Введение}{9}{chapter*.5}%
+\contentsline {section}{\numberline {1}Классификация методов фильтрации спама в электронной почте}{11}{section.0.1}%
+\contentsline {subsection}{\numberline {1.1}На основе репутации (Reputation-based)}{11}{subsection.0.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Анализ источника сообщения}{11}{subsubsection.0.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Анализ социальных сетей}{12}{subsubsection.0.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Анализ трафика}{12}{subsubsection.0.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Анализ протокола}{12}{subsubsection.0.1.1.4}%
+\contentsline {subsection}{\numberline {1.2}На основе текстового содержимого}{13}{subsection.0.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Эвристические фильтры}{13}{subsubsection.0.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Fingerprint-based фильтры}{14}{subsubsection.0.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}Фильтрация на основе машинного обучения}{15}{subsection.0.1.3}%
+\contentsline {section}{\numberline {2}Фильтрация спама на основе машинного обучения}{16}{section.0.2}%
+\contentsline {subsection}{\numberline {2.1}Фильтрация спама как задача машинного обучения}{16}{subsection.0.2.1}%
+\contentsline {subsection}{\numberline {2.2}Модели машинного обучения, используемые для фильтрации спама}{16}{subsection.0.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Наивный Байесовский классификатор (NBC)}{17}{subsubsection.0.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Мультиномиальный наивный Байесовский \\ классификатор (MNB)}{18}{subsubsection.0.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Метод опорных векторов (SVM)}{19}{subsubsection.0.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Стохастический градиентный спуск}{20}{subsubsection.0.2.2.4}%
+\contentsline {subsection}{\numberline {2.3}Выбор алгоритма машинного обучения для эксперимента}{21}{subsection.0.2.3}%
+\contentsline {section}{\numberline {3}Алгоритмы оптимизации}{22}{section.0.3}%
+\contentsline {subsection}{\numberline {3.1}Задача оптимизации}{22}{subsection.0.3.1}%
+\contentsline {subsection}{\numberline {3.2}Классификация алгоритмов оптимизации}{23}{subsection.0.3.2}%
+\contentsline {subsection}{\numberline {3.3}Оптимизация гиперпараметров в машинном обучении}{24}{subsection.0.3.3}%
+\contentsline {subsection}{\numberline {3.4}Природные алгоритмы оптимизации}{25}{subsection.0.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Эволюционные алгоритмы}{25}{subsubsection.0.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Алгоритмы на основе роевого интеллекта}{25}{subsubsection.0.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Алгоритмы на основе физики / химии}{27}{subsubsection.0.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Алгоритмы, основанные на социальном поведении человека}{27}{subsubsection.0.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}Алгоритмы на основе растений}{28}{subsubsection.0.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.6}Алгоритмы со смешанными источниками вдохновения}{28}{subsubsection.0.3.4.6}%
+\contentsline {section}{\numberline {4}Оценка производительности моделей машинного обучения}{29}{section.0.4}%
+\contentsline {subsection}{\numberline {4.1}Матрица ошибок}{29}{subsection.0.4.1}%
+\contentsline {subsection}{\numberline {4.2}Точность (Accuracy)}{29}{subsection.0.4.2}%
+\contentsline {subsection}{\numberline {4.3}Recall}{29}{subsection.0.4.3}%
+\contentsline {subsection}{\numberline {4.4}Precision}{30}{subsection.0.4.4}%
+\contentsline {subsection}{\numberline {4.5}F1-score}{30}{subsection.0.4.5}%
+\contentsline {subsection}{\numberline {4.6}ROC-кривая}{30}{subsection.0.4.6}%
+\contentsline {subsection}{\numberline {4.7}Перекрестная проверка}{31}{subsection.0.4.7}%
+\contentsline {section}{\numberline {5}Подготовка к проведению эксперимента}{32}{section.0.5}%
+\contentsline {subsection}{\numberline {5.1}Планирование эксперимента}{32}{subsection.0.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}Перекрестная проверка}{33}{subsubsection.0.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}Подбор параметров}{33}{subsubsection.0.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}Архитектура системы для проведения эксперимента}{33}{subsection.0.5.2}%
+\contentsline {section}{\numberline {6}Определение набора алгоритмов для проведения эксперимента}{35}{section.0.6}%
+\contentsline {subsection}{\numberline {6.1}Оптимизатор орла (Aquila optimizer)}{35}{subsection.0.6.1}%
+\contentsline {subsection}{\numberline {6.2}Поиск голодных игр (Hunger Games Search)}{35}{subsection.0.6.2}%
+\contentsline {subsection}{\numberline {6.3}Алгоритм поиска воробьев (Sparrow Search Algorithm)}{36}{subsection.0.6.3}%
+\contentsline {subsection}{\numberline {6.4}Алгоритм оптимизации кормодобывания скатов манта (Manta Ray Foraging Optimization)}{36}{subsection.0.6.4}%
+\contentsline {section}{\numberline {7}Определение инструментов и данных}{37}{section.0.7}%
+\contentsline {subsection}{\numberline {7.1}Оборудование и программное обеспечение}{37}{subsection.0.7.1}%
+\contentsline {subsection}{\numberline {7.2}Определение наборов данных}{37}{subsection.0.7.2}%
+\contentsline {subsection}{\numberline {7.3}Предварительная обработка данных}{39}{subsection.0.7.3}%
+\contentsline {subsubsection}{\numberline {7.3.1}Приведение к общему виду}{39}{subsubsection.0.7.3.1}%
+\contentsline {subsubsection}{\numberline {7.3.2}Символьная обработка}{39}{subsubsection.0.7.3.2}%
+\contentsline {subsubsection}{\numberline {7.3.3}Токенизация}{40}{subsubsection.0.7.3.3}%
+\contentsline {section}{\numberline {8}Программная реализация эксперимента}{42}{section.0.8}%
+\contentsline {subsection}{\numberline {8.1}Настройка параметров модели}{42}{subsection.0.8.1}%
+\contentsline {subsection}{\numberline {8.2}Применение природных алгоритмов оптимизации}{43}{subsection.0.8.2}%
+\contentsline {section}{\numberline {9}Результаты}{44}{section.0.9}%
+\contentsline {chapter}{Заключение}{50}{chapter*.19}%
+\contentsline {chapter}{Список использованных источников}{52}{section*.20}%
 \selectlanguage *{english}
 \selectlanguage *{english}
 \selectlanguage *{english}
